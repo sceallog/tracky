@@ -16,8 +16,10 @@
 
 @import "bootstrap/scss/bootstrap";
 @import "all";
-@import "sb-admin-2.css";
+@import "sb-admin-2";
 
-body {
-  font-family: "Poppins", sans-serif;
+.profile-round {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
 }

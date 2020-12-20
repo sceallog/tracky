@@ -3,7 +3,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-        <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="col-xl-7 col-lg-6 col-md-9">
 
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
@@ -24,21 +24,22 @@
                               <%= f.label :remember_me, class: 'custom-control-label' %>
                             </div>
                           </div>
-                          <%= f.submit 'Login', class: 'btn btn-primary btn-user btn-block' %>
+                          <div class="form-group row justify-content-center">
+                            <%= f.submit 'Login', class: 'btn btn-primary btn-user col-sm-6' %>
+                          </div>
                           <hr>
-                          <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-google btn-user btn-block' do %>
+                          <div class="form-group row justify-content-center">
+                            <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-google btn-user col-sm-6' do %>
                             <i class="fab fa-google fa-fw"></i> Login with Google
-                          <% end %>
-                          <a href="index.html" class="btn btn-google btn-user btn-block">
-                              <i class="fab fa-google fa-fw"></i> Login with Google
-                          </a>
+                            <% end %>
+                          </div>
                       <% end %>
                       <hr>
                       <div class="text-center">
-                          <a class="small" href="forgot-password.html">Forgot Password?</a>
+                        <%= link_to  "Forgot Password?", new_user_password_path, class: 'small' %>
                       </div>
                       <div class="text-center">
-                          <a class="small" href="register.html">Create an Account!</a>
+                        <%= link_to  "Create an Account!", new_user_registration_path, class: 'small' %>
                       </div>
                   </div>
                 </div>
