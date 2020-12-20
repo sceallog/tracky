@@ -12,12 +12,14 @@
         <div class="card-body">
           <%= image_tag avatar(current_user), class: 'mx-auto d-block img-thumbnail profile-round' %>
         </div>
-        <%= form_with(model: @user, url: users_edit_url(@user), action: :update, method: :post, multipart: true) do |f| %>
-          <div class="custom-file my-3">
-            <%= f.file_field :avatar, class: 'custom-file-input', onchange: 'this.form.submit();' %>
-            <%= f.label :avatar, 'Change Avatar', class: 'custom-file-label' %>
-          </div>
-        <% end %>
+        <div class="mx-2 mb-3">
+          <%= form_with(model: @user, url: users_edit_url(@user), action: :update, method: :post, multipart: true) do |f| %>
+            <div class="custom-file">
+              <%= f.file_field :avatar, class: 'custom-file-input', onchange: 'this.form.submit();', accept: 'image/png,image/jpeg,image/svg' %>
+              <%= f.label :avatar, 'Change Avatar', class: 'custom-file-label' %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 
