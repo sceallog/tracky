@@ -10,6 +10,9 @@ require("channels")
 require("bootstrap")
 require("./vendor/jquery.easing.min.js")
 require("./sb-admin-2")
+require('noty')
+
+window.Noty = require('noty');
 
 // Stylesheets
 // require("../../assets/stylesheets/application.scss")

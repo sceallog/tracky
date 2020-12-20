@@ -7,9 +7,18 @@
        %>
     </h2>
     <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+      <script>
+        <% resource.errors.full_messages.each do |message| %>
+          new Noty({
+            type: 'error',
+            layout: 'topCenter',
+            theme: 'metroui',
+            text: <%= message %>,
+            timeout: 3000,
+            progressBar: false
+          }).show
+        <% end %>
+      </script>
     </ul>
   </div>
 <% end %>
