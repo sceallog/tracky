@@ -44,13 +44,18 @@
 
             <div class="field">
               <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+              <% if current_user.provider %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', readonly: 'readonly' %>
+                <em>You cannot change your email address while logged in via a third party provider.</em>
+              <% else %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+              <% end %>
             </div>
             <br>
 
             <div class="field">
-              <%= f.label :role_id %><br>
-              <%= f.select(:role_id, options_for_select(@roles.map{ |r| [r.title, r.id] }), { wrapper: {} }, { class: 'custom-select mb-3' }) %>
+              Role <br>
+              <%= current_user.role.title %>
             </div>
             <br>
 
@@ -79,11 +84,11 @@
                 <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
               </div> 
               <br>
+            <% end %>
 
               <div class="actions">
                 <%= f.submit "Update", class: 'btn btn-primary mt-3' %>
               </div>
-            <% end %>
           <% end %>
         </div>
       </div>
