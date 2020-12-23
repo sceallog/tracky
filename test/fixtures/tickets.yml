@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  summary: MyString
+  description: MyText
+  identified_by_user_id: 1
+  date_identified: 2020-12-23
+  related_project_id: 1
+  assigned_to_user_id: 1
+  status: 1
+  priority: MyString
+  target_resolution_date: 2020-12-23
+  actual_resolution_date: 2020-12-23
+  resolution_summary: MyText
+
+two:
+  summary: MyString
+  description: MyText
+  identified_by_user_id: 1
+  date_identified: 2020-12-23
+  related_project_id: 1
+  assigned_to_user_id: 1
+  status: 1
+  priority: MyString
+  target_resolution_date: 2020-12-23
+  actual_resolution_date: 2020-12-23
+  resolution_summary: MyText

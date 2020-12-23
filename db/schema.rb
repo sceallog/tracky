@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_20_112014) do
+ActiveRecord::Schema.define(version: 2020_12_23_081528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,35 @@ ActiveRecord::Schema.define(version: 2020_12_20_112014) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.date "start_date"
+    t.date "target_end_date"
+    t.date "actual_end_date"
+    t.integer "created_by"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "summary", null: false
+    t.text "description", null: false
+    t.integer "identified_by_user_id", null: false
+    t.date "date_identified", null: false
+    t.integer "related_project_id", null: false
+    t.integer "assigned_to_user_id"
+    t.integer "status", default: 1, null: false
+    t.string "priority", default: "low"
+    t.date "target_resolution_date", null: false
+    t.date "actual_resolution_date"
+    t.text "resolution_summary", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
