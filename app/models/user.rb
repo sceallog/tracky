@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   belongs_to :role
+  has_many :projects
+  has_many :tickets
 
   def self.create_from_provider_data(provider_data)
     where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do |user|

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_23_081528) do
+ActiveRecord::Schema.define(version: 2020_12_23_095958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,9 +42,10 @@ ActiveRecord::Schema.define(version: 2020_12_23_081528) do
     t.date "start_date"
     t.date "target_end_date"
     t.date "actual_end_date"
-    t.integer "created_by"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "creator_id"
+    t.index ["creator_id"], name: "index_projects_on_creator_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -67,6 +68,8 @@ ActiveRecord::Schema.define(version: 2020_12_23_081528) do
     t.text "resolution_summary", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "creator_id"
+    t.index ["creator_id"], name: "index_tickets_on_creator_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,5 +92,7 @@ ActiveRecord::Schema.define(version: 2020_12_23_081528) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "projects", "users", column: "creator_id"
+  add_foreign_key "tickets", "users", column: "creator_id"
   add_foreign_key "users", "roles"
 end

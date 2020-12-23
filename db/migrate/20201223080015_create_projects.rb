@@ -6,7 +6,6 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.date :start_date
       t.date :target_end_date
       t.date :actual_end_date
-      t.integer :created_by
 
       t.timestamps
     end
