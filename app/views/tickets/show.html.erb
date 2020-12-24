@@ -1,0 +1,19 @@
+<div class="container">
+
+  <h1><%= @ticket.summary %></h1>
+
+  <h2><%= @ticket.project.name %></h2>
+
+  <p>Description: <%= @ticket.description %></p>
+
+  <p>Priority: <%= @ticket.priority %></p>
+
+  <p>Identified on: <%= @ticket.date_identified %></p>
+
+  <p>Target resolution date: <%= @ticket.target_resolution_date %></p>
+
+  <p>Project created at <%= @ticket.created_at %></p>
+
+  <p>Project created by <%= @ticket.user.name %></p>
+
+</div>

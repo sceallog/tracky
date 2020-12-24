@@ -1,0 +1,20 @@
+<%= form_with(model: @ticket, url: project_tickets_path, method: :post, local: true) do |f| %>
+
+  <%= f.label :summary %>
+  <%= f.text_field :summary, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'form-control' %>
+  
+  <%= f.label :date_identified %>
+  <%= f.date_field :date_identified, class: 'form-control' %>
+
+  <%= f.label :priority %>
+  <%= f.text_field :priority, autocomplete: 'priority', class: 'form-control' %>
+
+  <%= f.label :target_resolution_date %>
+  <%= f.date_field :target_resolution_date, class: 'form-control' %>
+
+  <%= f.submit %>
+
+<% end %>
