@@ -1,4 +1,4 @@
-<%= form_with(model: @ticket, url: project_tickets_path, method: :post, local: true) do |f| %>
+<%= form_with(model: @ticket, url: project_ticket_path(@project, @ticket), method: :put, local: true) do |f| %>
 
   <%= f.label :title %>
   <%= f.text_field :title, class: 'form-control' %>
@@ -19,6 +19,17 @@
   <%= f.label :target_resolution_date %>
   <%= f.date_field :target_resolution_date, class: 'form-control' %>
 
-  <%= f.submit %>
+  <div class='btn btn-success btn-icon-split'>
+    <div class="icon">
+      <div class="fas fa-check"></div>
+    </div>
+    <%= f.submit class: 'btn btn-success'%>
+  </div>
 
+  <%= link_to project_ticket_path(@project, @ticket), class: 'btn btn-danger btn-icon-split text-decoration-none' do %>
+    <div class="icon">
+      <div class="fas fa-times"></div>
+    </div>
+    <div class="text">Cancel</div>
+  <% end %>
 <% end %>

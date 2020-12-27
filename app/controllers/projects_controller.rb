@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, except: %i[new create index]
-  before_action :set_tickets, only: %i[index show]
+  before_action :set_tickets, only: %i[index]
 
   def new
     @project = current_user.projects.build
@@ -23,9 +23,18 @@ class ProjectsController < ApplicationController
     @open_tickets = @tickets.where(status: 1)
   end
 
-  def show; end
+  def show
+    @tickets = Ticket.where('project_id = ?', @project.id)
+  end
 
-  def update; end
+  def update
+    if @project.update(project_params)
+      flash[:success] = 'Project updated'
+      redirect_to @project
+    else
+      render 'edit'
+    end
+  end
 
   private
 
@@ -38,6 +47,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :start_date, :target_end_date, :actual_end_date, :updated_by, :user_id)
+    params.require(:project).permit(:name, :description, :start_date, :target_end_date, :actual_end_date, :updated_by, :user_id)
   end
 end

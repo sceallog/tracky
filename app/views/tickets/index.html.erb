@@ -1,5 +1,6 @@
 <div class="container">
   <h1 class='text-capitalize'>Tickets for <%= @project.name %></h1>
+  <%= link_to  "Back to Project Overview", @project %>
 
   <table class='table'>
     <thead class='thead-light text-uppercase'>
@@ -9,18 +10,25 @@
         <th>Assigned To</th>
         <th>Status</th>
         <th>Priority</th>
-        <th>Target Resolution Date</th>
+        <th></th>
       </tr>
     </thead>
     <% @tickets.each do |t| %>
     <tbody class='table-striped'>
       <tr>
-        <td><%= link_to t.summary, project_ticket_path(@project, t.id), class: 'text-decoration-none' %></td>
+        <td><%= t.title %></td>
         <td><%= t.date_identified %></td>
         <td><%= t.assigned_to_user_id %></td>
-        <td><%= t.status %></td>
-        <td><%= t.priority %></td>
-        <td><%= t.target_resolution_date %></td>
+        <td><%= t.status.name %></td>
+        <td><%= t.priority.name %></td>
+        <td>
+          <%= link_to project_ticket_path(@project, t.id), class: 'btn-sm btn-secondary btn-icon-split text-decoration-none' do %>
+            <div class="icon">
+              <div class="fas fa-info-circle"></div>
+            </div>
+            <div class="text">Details</div>
+          <% end %>
+        </td>
       </tr>
     <% end %>
     </tbody>

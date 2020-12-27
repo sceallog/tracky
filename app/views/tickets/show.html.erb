@@ -1,19 +1,72 @@
 <div class="container">
-
-  <h1><%= @ticket.summary %></h1>
-
-  <h2><%= @ticket.project.name %></h2>
-
-  <p>Description: <%= @ticket.description %></p>
-
-  <p>Priority: <%= @ticket.priority %></p>
-
-  <p>Identified on: <%= @ticket.date_identified %></p>
-
-  <p>Target resolution date: <%= @ticket.target_resolution_date %></p>
-
-  <p>Project created at <%= @ticket.created_at %></p>
-
-  <p>Project created by <%= @ticket.user.name %></p>
-
+  <div class="ticket-header">
+      <h1>Details for Ticket #<%= @ticket.id %></h1>
+      <div class="inline">
+        <%= link_to  "Back to List", project_tickets_path %> |
+        <%= link_to  "Edit", edit_project_ticket_path(@project, @ticket) %>
+      </div>
+    </div>
+  </div>
+  <div class="container ticket-info">
+    <div class="row">
+      <div class="col-sm">
+        <p>Ticket Title</p>
+        <%= @ticket.title %>
+      </div>
+      <div class="col-sm">
+        <p>Ticket Description</p>
+        <%= @ticket.description %>
+      </div>
+    </div>
+      <hr>
+    <div class="row">
+      <div class="col-sm">
+        <p>Assigned Developer</p>
+        <%= @ticket.assigned_to_user_id %>
+      </div>
+      <div class="col-sm">
+        <p>Submitter</p>
+        <%= @ticket.user.name %>
+      </div>
+    </div>
+      <hr>
+    <div class="row">
+      <div class="col-sm">
+        <p>Project</p>
+        <%= link_to @ticket.project.name, @project %>
+      </div>
+      <div class="col-sm">
+        <p>Ticket Priority</p>
+        <%= @ticket.priority.name %>
+      </div>
+    </div>
+      <hr>
+    <div class="row">
+      <div class="col-sm">
+        <p>Ticket Status</p>
+        <%= @ticket.status.name %>
+      </div>
+      <div class="col-sm">
+        <p>Ticket Type</p>
+        <div>Put type here</div>
+      </div>
+    </div>
+      <hr>
+    <div class="row">
+      <div class="col-sm">
+        <p>Created</p>
+        <%= @ticket.created_at %>
+      </div>
+      <div class="col-sm">
+        <p>Updated</p>
+        <%= @ticket.updated_at %>
+      </div>
+    </div>
+    <%= link_to project_ticket_path(@project, @ticket), method: :delete, class: 'btn-sm btn-danger btn-icon-split text-decoration-none' do %>
+      <div class="icon">
+        <div class="fas fa-trash"></div>
+      </div>
+      <div class="text">Delete</div>
+    <% end %>
+  </div>
 </div>

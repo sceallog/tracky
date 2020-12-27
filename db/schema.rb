@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_24_095126) do
+ActiveRecord::Schema.define(version: 2020_12_25_140358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 2020_12_24_095126) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "priorities", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -54,13 +58,15 @@ ActiveRecord::Schema.define(version: 2020_12_24_095126) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
-    t.string "summary", null: false
+    t.string "title", null: false
     t.text "description", null: false
     t.date "date_identified", null: false
     t.integer "assigned_to_user_id"
-    t.integer "status", default: 1, null: false
-    t.string "priority", default: "low"
     t.date "target_resolution_date", null: false
     t.date "actual_resolution_date"
     t.text "resolution_summary"
@@ -68,7 +74,11 @@ ActiveRecord::Schema.define(version: 2020_12_24_095126) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.bigint "project_id"
+    t.bigint "status_id"
+    t.bigint "priority_id"
+    t.index ["priority_id"], name: "index_tickets_on_priority_id"
     t.index ["project_id"], name: "index_tickets_on_project_id"
+    t.index ["status_id"], name: "index_tickets_on_status_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
@@ -93,7 +103,9 @@ ActiveRecord::Schema.define(version: 2020_12_24_095126) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "projects", "users"
+  add_foreign_key "tickets", "priorities"
   add_foreign_key "tickets", "projects"
+  add_foreign_key "tickets", "statuses"
   add_foreign_key "tickets", "users"
   add_foreign_key "users", "roles"
 end

@@ -24,7 +24,20 @@ class TicketsController < ApplicationController
     @tickets = Ticket.where('project_id = ?', @project.id)
   end
 
-  def update; end
+  def update
+    if @ticket.update(ticket_params)
+      flash[:success] = 'Ticket updated'
+      redirect_to project_ticket_path(@project, @ticket)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @ticket.destroy
+    flash[:success] = 'Ticket deleted'
+    redirect_to @project
+  end
 
   private
 
@@ -40,6 +53,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:summary, :description, :date_identified, :assigned_to_user_id, :related_project_id, :status, :priority, :target_resolution_date, :actual_resolution_date, :resolution_summary, :updated_by, :user_id)
+    params.require(:ticket).permit(:title, :description, :date_identified, :assigned_to_user_id, :related_project_id, :status_id, :priority_id, :target_resolution_date, :actual_resolution_date, :resolution_summary, :updated_by, :user_id)
   end
 end

@@ -7,3 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Role.create([{ title: 'Developer' }, { title: 'Manager' }])
+
+Status.create([{ name: 'Open' }, { name: 'In Progress' }, { name: 'Resolved' }])
+
+Priority.create([{ name: 'None' }, { name: 'Low' }, { name: 'Medium' }, { name: 'High' }])

@@ -5,18 +5,25 @@
     <thead class='thead-light text-uppercase'>
       <tr>
         <th>Project Name</th>
-        <th>Start Date</th>
-        <th>Target End Date</th>
+        <th>Description</th>
         <th>Open Tickets</th>
+        <th></th>
       </tr>
     </thead>
     <% @projects.each do |p| %>
     <tbody class='table-striped'>
       <tr>
-        <td><%= link_to p.name, project_path(p.id), class: 'text-decoration-none' %></td>
-        <td><%= p.start_date %></td>
-        <td><%= p.target_end_date %></td>
+        <td><%= p.name %></td>
+        <td><%= p.description %></td>
         <td><%= @open_tickets.size %></td>
+        <td>
+          <%= link_to project_path(p.id), class: 'btn-sm btn-secondary btn-icon-split text-decoration-none' do %>
+            <div class="icon">
+              <div class="fas fa-info-circle"></div>
+            </div>
+            <div class="text">Details</div>
+          <% end %>
+        </td>
       </tr>
     <% end %>
     </tbody>

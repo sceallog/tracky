@@ -1,0 +1,33 @@
+<div class="container">
+
+  <%= form_with(model: @project, method: :put, local: true) do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, autofocus: true, class: 'form-control' %>
+
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date, autofocus: true, class: 'form-control' %>
+
+    <%= f.label :target_end_date %>
+    <%= f.date_field :target_end_date, autofocus: true, class: 'form-control' %>
+
+    <div class='btn btn-success btn-icon-split mt-3'>
+      <div class="icon">
+        <div class="fas fa-check"></div>
+      </div>
+      <%= f.submit class: 'btn btn-success'%>
+    </div>
+
+    <%= link_to @project, class: 'btn btn-danger btn-icon-split text-decoration-none mt-3' do %>
+      <div class="icon">
+        <div class="fas fa-times"></div>
+      </div>
+      <div class="text">Cancel</div>
+    <% end %>
+
+  <% end %>
+
+</div>
