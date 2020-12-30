@@ -1,35 +1,40 @@
-<%= form_with(model: @ticket, url: project_ticket_path(@project, @ticket), method: :put, local: true) do |f| %>
+<div class="container">
+  <%= form_with(model: @ticket, method: :put, local: true) do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control' %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
 
-  <%= f.label :description %>
-  <%= f.text_area :description, class: 'form-control' %>
-  
-  <%= f.label :date_identified %>
-  <%= f.date_field :date_identified, class: 'form-control' %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+    
+    <%= f.label :date_identified %>
+    <%= f.date_field :date_identified, class: 'form-control' %>
 
-  <%= f.label :priority %>
-  <%= f.select :priority_id, Priority.all.collect{ |p| [ p.name, p.id ] }, class: 'form-control' %>
+    <%= f.label :priority %>
+    <%= f.select :priority_id, Priority.all.collect{ |p| [ p.name, p.id ] }, class: 'form-control' %>
 
-  <%= f.label :status %>
-  <%= f.select :status_id, Status.all.collect{ |s| [ s.name, s.id ] }, class: 'form-control' %>
-  <br>
+    <%= f.label :status %>
+    <%= f.select :status_id, Status.all.collect{ |s| [ s.name, s.id ] }, class: 'form-control' %>
+    <br>
+    <%= f.label :user_id, 'Assigned Developer' %>
+    <%= f.select :user_id, User.where(role_id: 1).collect{ |u| [ u.name, u.id ] } %>
+    <br>
 
-  <%= f.label :target_resolution_date %>
-  <%= f.date_field :target_resolution_date, class: 'form-control' %>
+    <%= f.label :target_resolution_date %>
+    <%= f.date_field :target_resolution_date, class: 'form-control' %>
 
-  <div class='btn btn-success btn-icon-split'>
-    <div class="icon">
-      <div class="fas fa-check"></div>
+    <div class='btn btn-success btn-icon-split'>
+      <div class="icon">
+        <div class="fas fa-check"></div>
+      </div>
+      <%= f.submit class: 'btn btn-success'%>
     </div>
-    <%= f.submit class: 'btn btn-success'%>
-  </div>
 
-  <%= link_to project_ticket_path(@project, @ticket), class: 'btn btn-danger btn-icon-split text-decoration-none' do %>
-    <div class="icon">
-      <div class="fas fa-times"></div>
-    </div>
-    <div class="text">Cancel</div>
+    <%= link_to @ticket, class: 'btn btn-danger btn-icon-split text-decoration-none' do %>
+      <div class="icon">
+        <div class="fas fa-times"></div>
+      </div>
+      <div class="text">Cancel</div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

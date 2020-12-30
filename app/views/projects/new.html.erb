@@ -1,14 +1,21 @@
-<%= form_with(model: @project, local: true) do |f| %>
+<div class="container">
+  <%= form_with(model: @project, local: true) do |f| %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.label :start_date %>
-  <%= f.date_field :start_date, class: 'form-control' %>
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date, class: 'form-control' %>
 
-  <%= f.label :target_end_date %>
-  <%= f.date_field :target_end_date, class: 'form-control' %>
+    <%= f.label :target_end_date %>
+    <%= f.date_field :target_end_date, class: 'form-control' %>
 
-  <%= f.submit %>
+    <div class='btn btn-success btn-icon-split mt-3'>
+      <div class="icon">
+        <div class="fas fa-check"></div>
+      </div>
+      <%= f.submit class: 'btn btn-success'%>
+    </div>
 
-<% end %>
+  <% end %>
+</div>

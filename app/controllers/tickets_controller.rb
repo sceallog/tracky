@@ -1,11 +1,12 @@
 class TicketsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project
+  before_action :set_project, only: %i[new create index]
   before_action :set_ticket, except: %i[new create index]
+  # before_action :get_developers, only: %i[new update]
 
   def new
     @ticket = @project.tickets.build
-    @ticket.user_id = current_user.id
+    @ticket.submitted_by = current_user.name
   end
 
   def create
@@ -13,7 +14,7 @@ class TicketsController < ApplicationController
     @ticket.user_id = current_user.id
     if @ticket.save
       flash[:notice] = 'Ticket created'
-      redirect_to project_ticket_path(@project, @ticket)
+      redirect_to @ticket
     else
       flash[:alert] = @ticket.errors.full_messages
       render 'new'
@@ -27,16 +28,19 @@ class TicketsController < ApplicationController
   def update
     if @ticket.update(ticket_params)
       flash[:success] = 'Ticket updated'
-      redirect_to project_ticket_path(@project, @ticket)
+      redirect_to @ticket
     else
       render 'edit'
     end
   end
 
   def destroy
+    @project = @ticket.project
     @ticket.destroy
-    flash[:success] = 'Ticket deleted'
-    redirect_to @project
+    # flash[:success] = 'Ticket deleted'
+    respond_to do |format|
+      format.html { redirect_to @project, notice: 'Ticket deleted' }
+    end
   end
 
   private
@@ -52,7 +56,13 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
   end
 
+  # def set_developers
+  #   User.where(role_id: 1).find_each do |dev|
+  #     @developers =
+  #   @developers = User.where('role_id = ?', Role.find_by(title: 'Developer'))
+  # end
+
   def ticket_params
-    params.require(:ticket).permit(:title, :description, :date_identified, :assigned_to_user_id, :related_project_id, :status_id, :priority_id, :target_resolution_date, :actual_resolution_date, :resolution_summary, :updated_by, :user_id)
+    params.require(:ticket).permit(:title, :description, :date_identified, :submitted_by, :related_project_id, :status_id, :priority_id, :target_resolution_date, :actual_resolution_date, :resolution_summary, :updated_by, :user_id)
   end
 end

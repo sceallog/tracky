@@ -54,8 +54,8 @@
             <br>
 
             <div class="field">
-              Role <br>
-              <%= current_user.role.title %>
+              <%= f.label :role_id, "Role" %>
+              <%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, selected: current_user.role.title %>
             </div>
             <br>
 

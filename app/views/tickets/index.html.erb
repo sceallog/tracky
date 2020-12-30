@@ -18,11 +18,11 @@
       <tr>
         <td><%= t.title %></td>
         <td><%= t.date_identified %></td>
-        <td><%= t.assigned_to_user_id %></td>
+        <td><%= t.user.name %></td>
         <td><%= t.status.name %></td>
         <td><%= t.priority.name %></td>
         <td>
-          <%= link_to project_ticket_path(@project, t.id), class: 'btn-sm btn-secondary btn-icon-split text-decoration-none' do %>
+          <%= link_to ticket_path(t.id), class: 'btn-sm btn-secondary btn-icon-split text-decoration-none' do %>
             <div class="icon">
               <div class="fas fa-info-circle"></div>
             </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_140358) do
+ActiveRecord::Schema.define(version: 2020_12_27_081934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_12_25_140358) do
     t.string "title", null: false
     t.text "description", null: false
     t.date "date_identified", null: false
-    t.integer "assigned_to_user_id"
+    t.string "submitted_by"
     t.date "target_resolution_date", null: false
     t.date "actual_resolution_date"
     t.text "resolution_summary"
