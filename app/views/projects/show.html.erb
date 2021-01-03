@@ -27,10 +27,21 @@
   <p>Project created by <%= @project.user.name %></p>
 
   <div class="ticket-info">
-    <div class="ticket-header">
-    <h2>Tickets for this Project</h2>
-    <h3>Condensed Ticket Details</h3>
-    <table class='table'>
+    <div class="ticket-header row justify-content-between">
+      <div class="col-6">
+        <h2>Tickets for this Project</h2>
+        <h3>Condensed Ticket Details</h3>
+      </div>
+      <div class="col-3 ml-auto mt-auto mb-1">
+        <%= link_to new_project_ticket_path(@project), class: 'btn btn-primary btn-icon-split text-decoration-none' do %>
+          <div class="icon">
+            <div class="fas fa-plus"></div>
+          </div>
+          <div class="text">Add a Ticket</div>
+        <% end %>
+      </div>
+    </div>
+    <table class='table table-sortable'>
       <thead class='thead-light text-uppercase'>
         <tr>
           <th>Title</th>
@@ -39,12 +50,7 @@
           <th>Status</th>
           <th>Created</th>
           <th>
-            <%= link_to new_project_ticket_path(@project), class: 'btn btn-primary btn-icon-split text-decoration-none' do %>
-            <div class="icon">
-              <div class="fas fa-plus"></div>
-            </div>
-            <div class="text">Add a Ticket</div>
-          <% end %>
+            
           </th>
         </tr>
       </thead>
@@ -74,7 +80,8 @@
         <% end %>
       </tbody>
     </table>
-    </div>
   </div>
 
 </div>
+
+<%= javascript_pack_tag 'tablesort.js', 'data-turbolinks-track': 'reload' %>
