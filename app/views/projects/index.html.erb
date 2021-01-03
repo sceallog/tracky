@@ -1,5 +1,17 @@
 <div class="container">
-  <h1 class='text-capitalize'>Your projects</h1>
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <h1 class='text-capitalize'>Your projects</h1>
+    </div>
+    <div class="col-4">
+      <%= link_to new_project_path, class: 'btn btn-primary btn-icon-split text-decoration-none' do %>
+        <div class="icon">
+          <div class="fas fa-plus"></div>
+        </div>
+        <div class="text">Add a Project</div>
+      <% end %>
+    </div>
+  </div>
 
   <table class='table'>
     <thead class='thead-light text-uppercase'>

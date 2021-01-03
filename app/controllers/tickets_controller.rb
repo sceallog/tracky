@@ -2,16 +2,17 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: %i[new create index]
   before_action :set_ticket, except: %i[new create index]
+  before_action :get_comments, only: [:show]
   # before_action :get_developers, only: %i[new update]
 
   def new
     @ticket = @project.tickets.build
-    @ticket.submitted_by = current_user.name
   end
 
   def create
     @ticket = @project.tickets.build(ticket_params)
     @ticket.user_id = current_user.id
+    @ticket.submitted_by = current_user.name
     if @ticket.save
       flash[:notice] = 'Ticket created'
       redirect_to @ticket
@@ -37,7 +38,6 @@ class TicketsController < ApplicationController
   def destroy
     @project = @ticket.project
     @ticket.destroy
-    # flash[:success] = 'Ticket deleted'
     respond_to do |format|
       format.html { redirect_to @project, notice: 'Ticket deleted' }
     end
@@ -54,6 +54,10 @@ class TicketsController < ApplicationController
 
   def set_ticket
     @ticket = Ticket.find(params[:id])
+  end
+
+  def get_comments
+    @comments = Comment.where(ticket_id: @ticket.id)
   end
 
   # def set_developers

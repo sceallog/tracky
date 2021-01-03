@@ -15,5 +15,8 @@ module Tracky
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # Set the application's time zone to JST
+    config.time_zone = 'Osaka'
   end
 end
