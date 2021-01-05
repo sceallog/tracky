@@ -2,8 +2,8 @@
   <h1 class='text-capitalize'>Tickets for <%= @project.name %></h1>
   <%= link_to  "Back to Project Overview", @project %>
 
-  <table class='table'>
-    <thead class='thead-light text-uppercase'>
+  <table class='content-table table-sortable'>
+    <thead class='text-uppercase'>
       <tr>
         <th>Ticket Summary</th>
         <th>Date Identified</th>
@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <% @tickets.each do |t| %>
-    <tbody class='table-striped'>
+    <tbody>
       <tr>
         <td><%= t.title %></td>
         <td><%= t.date_identified %></td>

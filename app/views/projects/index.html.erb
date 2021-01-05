@@ -13,8 +13,8 @@
     </div>
   </div>
 
-  <table class='table table-sortable'>
-    <thead class='thead-light text-uppercase'>
+  <table class='content-table table-sortable'>
+    <thead class='text-uppercase'>
       <tr>
         <th>Project Name</th>
         <th>Description</th>
@@ -23,7 +23,7 @@
       </tr>
     </thead>
     <% @projects.each do |p| %>
-    <tbody class='table-striped'>
+    <tbody>
       <tr>
         <td><%= p.name %></td>
         <td><%= p.description %></td>

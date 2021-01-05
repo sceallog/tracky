@@ -10,6 +10,8 @@ require("channels")
 require("bootstrap")
 require("./vendor/jquery.easing.min.js")
 require("./sb-admin-2")
+require("./tablesort")
+require("./tableclick")
 require('noty')
 
 window.Noty = require('noty');

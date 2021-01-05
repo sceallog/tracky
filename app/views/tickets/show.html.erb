@@ -83,31 +83,29 @@
         <% end %>
       </div>
       <div class="ticket-comments">
-        <table class='table'>
-          <thead class="thead-light text-uppercase">
+        <table class='content-table table-sortable'>
+          <thead class="text-uppercase">
             <tr>
               <th>Commenter</th>
               <th>Message</th>
               <th>Created at</th>
             </tr>
           </thead>
-          <% unless @comments.empty? %>
-            <% @comments.each do |c| %>
-            <tbody class='table-striped'>
-              <tr>
-                <td><%= c.commenter %></td>
-                <td><%= c.message %></td>
-                <td><%= c.created_at %></td>
-              </tr>
-            </tbody>
-            <% end %>
-          <% else %>
             <tbody>
-              <tr>
-                <td colspan="3" class='text-center'>No comments yet</td>
-              </tr>
+              <% unless @comments.empty? %>
+                <% @comments.each do |c| %>
+                  <tr>
+                    <td><%= c.commenter %></td>
+                    <td><%= c.message %></td>
+                    <td><%= c.created_at %></td>
+                  </tr>
+                <% end %>
+              <% else %>
+                <tr>
+                  <td colspan="3" class='text-center'>No comments yet</td>
+                </tr>
+              <% end %>
             </tbody>
-          <% end %>
         </table>
       </div>
     </div>
