@@ -22,19 +22,20 @@
 
     <%= f.label :target_resolution_date %>
     <%= f.date_field :target_resolution_date, class: 'form-control' %>
-
-    <div class='btn btn-success btn-icon-split'>
-      <div class="icon">
-        <div class="fas fa-check"></div>
+    <div class="form-group mt-2">
+      <div class='btn btn-success btn-icon-split'>
+        <div class="icon">
+          <div class="fas fa-check"></div>
+        </div>
+        <%= f.submit class: 'btn btn-success'%>
       </div>
-      <%= f.submit class: 'btn btn-success'%>
+
+      <%= link_to @ticket, class: 'btn btn-danger btn-icon-split text-decoration-none' do %>
+        <div class="icon">
+          <div class="fas fa-times"></div>
+        </div>
+        <div class="text">Cancel</div>
+      <% end %>
     </div>
-
-    <%= link_to @ticket, class: 'btn btn-danger btn-icon-split text-decoration-none' do %>
-      <div class="icon">
-        <div class="fas fa-times"></div>
-      </div>
-      <div class="text">Cancel</div>
-    <% end %>
   <% end %>
 </div>

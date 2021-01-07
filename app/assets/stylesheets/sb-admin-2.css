@@ -24,9 +24,9 @@
   --white: #fff;
   --gray: #858796;
   --gray-dark: #5a5c69;
-  --primary: #4e73df;
+  --primary: #ffa72b;
   --secondary: #858796;
-  --success: #1cc88a;
+  --success: #218c41;
   --info: #36b9cc;
   --warning: #f6c23e;
   --danger: #e74a3b;
@@ -78,9 +78,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #858796;
+  color: #4f5058;
   text-align: left;
-  background-color: #fff;
+  background-color: #ecf0f3;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -10184,7 +10184,7 @@ a:focus {
 }
 
 #wrapper #content-wrapper {
-  background-color: #f8f9fc;
+  background-color: #ecf0f3;
   width: 100%;
   overflow-x: hidden;
 }

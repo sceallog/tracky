@@ -1,45 +1,35 @@
 <div class="container">
-  <div class="row justify-content-between">
-    <div class="col-4">
-      <h1 class='text-capitalize'>Your projects</h1>
+  <div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <h4 class='card-title mt-auto mb-auto text-capitalize'>Your projects</h4>
+      <div>
+        <%= link_to new_project_path, class: 'btn btn-circle add-btn btn-lg mt-2' do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </div>
     </div>
-    <div class="col-4">
-      <%= link_to new_project_path, class: 'btn btn-primary btn-icon-split text-decoration-none' do %>
-        <div class="icon">
-          <div class="fas fa-plus"></div>
-        </div>
-        <div class="text">Add a Project</div>
-      <% end %>
+
+    <div class="card-body">
+      <table class='content-table table-sortable'>
+        <thead class='text-uppercase'>
+          <tr>
+            <th>Project Name</th>
+            <th>Description</th>
+            <th>Open Tickets</th>
+          </tr>
+        </thead>
+        <% @projects.each do |p| %>
+        <tbody>
+          <tr data-href="<%= project_url(p.id) %>" >
+            <td><%= p.name %></td>
+            <td><%= p.description %></td>
+            <td><%= @open_tickets.size %></td>
+          </tr>
+        <% end %>
+        </tbody>
+
+      </table>
     </div>
   </div>
-
-  <table class='content-table table-sortable'>
-    <thead class='text-uppercase'>
-      <tr>
-        <th>Project Name</th>
-        <th>Description</th>
-        <th>Open Tickets</th>
-        <th></th>
-      </tr>
-    </thead>
-    <% @projects.each do |p| %>
-    <tbody>
-      <tr>
-        <td><%= p.name %></td>
-        <td><%= p.description %></td>
-        <td><%= @open_tickets.size %></td>
-        <td>
-          <%= link_to project_path(p.id), class: 'btn-sm btn-secondary btn-icon-split text-decoration-none' do %>
-            <div class="icon">
-              <div class="fas fa-info-circle"></div>
-            </div>
-            <div class="text">Details</div>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-
-  </table>
 </div>
 <%= javascript_pack_tag 'tablesort.js', 'data-turbolinks-track': 'reload' %>

@@ -1,35 +1,54 @@
 <div class="container">
-  <%= form_with(model: @ticket, url: project_tickets_path, method: :post, local: true) do |f| %>
-
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
-
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
-    
-    <%= f.label :date_identified %>
-    <%= f.date_field :date_identified, class: 'form-control' %>
-
-    <%= f.label :priority %>
-    <%= f.select :priority_id, Priority.all.collect{ |p| [ p.name, p.id ] }, class: 'form-control' %>
-
-    <%= f.label :status %>
-    <%= f.select :status_id, Status.all.collect{ |s| [ s.name, s.id ] }, class: 'form-control' %>
-    <br>
-
-    <%= f.label :user_id, "Assign Developer" %>
-    <%= f.select :user_id, User.where(role_id: 1).collect{ |u| [u.name, u.id ] }, class: 'form-control' %>
-    <br>
-
-    <%= f.label :target_resolution_date %>
-    <%= f.date_field :target_resolution_date, class: 'form-control' %>
-
-    <div class='btn btn-success btn-icon-split mt-3'>
-      <div class="icon">
-        <div class="fas fa-check"></div>
-      </div>
-      <%= f.submit class: 'btn btn-success'%>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">
+        Add a new ticket
+      </h4>
+      <h5 class="card-subtitle">
+        This ticket will be added to the project "<%= @project.name %>"
+      </h5>
     </div>
+    <div class="card-body">
+      <%= form_with(model: @ticket, url: project_tickets_path, method: :post, local: true) do |f| %>
 
-  <% end %>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control' %>
+        
+        <%= f.label :date_identified %>
+        <%= f.date_field :date_identified, class: 'form-control' %>
+
+        <%= f.label :priority %>
+        <%= f.select :priority_id, Priority.all.collect{ |p| [ p.name, p.id ] }, class: 'form-control' %>
+
+        <%= f.label :status %>
+        <%= f.select :status_id, Status.all.collect{ |s| [ s.name, s.id ] }, class: 'form-control' %>
+        <br>
+
+        <%= f.label :user_id, "Assign Developer" %>
+        <%= f.select :user_id, User.where(role_id: 1).collect{ |u| [u.name, u.id ] }, class: 'form-control' %>
+        <br>
+
+        <%= f.label :target_resolution_date %>
+        <%= f.date_field :target_resolution_date, class: 'form-control' %>
+
+        <div class='btn btn-success btn-icon-split mt-3'>
+          <div class="icon">
+            <div class="fas fa-check"></div>
+          </div>
+          <%= f.submit class: 'btn btn-success'%>
+        </div>
+
+        <%= link_to @project, class: 'btn btn-danger btn-icon-split text-decoration-none mt-3' do %>
+      <div class="icon">
+        <div class="fas fa-times"></div>
+      </div>
+      <div class="text">Cancel</div>
+    <% end %>
+
+      <% end %>
+    </div>
+  </div>
 </div>
