@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_102838) do
+ActiveRecord::Schema.define(version: 2021_01_09_112815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 2020_12_30_102838) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["ticket_id"], name: "index_comments_on_ticket_id"
+  end
+
+  create_table "locales", force: :cascade do |t|
+    t.string "language"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["language"], name: "index_locales_on_language", unique: true
   end
 
   create_table "priorities", force: :cascade do |t|
@@ -105,7 +112,9 @@ ActiveRecord::Schema.define(version: 2020_12_30_102838) do
     t.string "uid"
     t.string "image"
     t.bigint "role_id"
+    t.bigint "locale_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["locale_id"], name: "index_users_on_locale_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
@@ -117,5 +126,6 @@ ActiveRecord::Schema.define(version: 2020_12_30_102838) do
   add_foreign_key "tickets", "projects"
   add_foreign_key "tickets", "statuses"
   add_foreign_key "tickets", "users"
+  add_foreign_key "users", "locales"
   add_foreign_key "users", "roles"
 end
