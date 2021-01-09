@@ -1,41 +1,43 @@
 <div class="container">
-  <%= form_with(model: @ticket, method: :put, local: true) do |f| %>
+  <div class="card">
+    <div class="card-header d-flex">
+      <h5 class="card-title mt-auto mb-auto">Edit Ticket #<%= @ticket.id %></h5>
+    </div>
+    <div class="card-body">
+      <%= form_with(model: @ticket, method: :put, local: true) do |f| %>
 
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control mb-3' %>
 
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
-    
-    <%= f.label :date_identified %>
-    <%= f.date_field :date_identified, class: 'form-control' %>
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control mb-3' %>
+        
+        <%= f.label :date_identified %>
+        <%= f.date_field :date_identified, class: 'form-control mb-3' %>
 
-    <%= f.label :priority %>
-    <%= f.select :priority_id, Priority.all.collect{ |p| [ p.name, p.id ] }, class: 'form-control' %>
+        <%= f.label :priority %>
+        <%= f.select :priority_id, Priority.all.collect{ |p| [ p.name, p.id ] }, class: 'form-control mb-3' %>
 
-    <%= f.label :status %>
-    <%= f.select :status_id, Status.all.collect{ |s| [ s.name, s.id ] }, class: 'form-control' %>
-    <br>
-    <%= f.label :user_id, 'Assigned Developer' %>
-    <%= f.select :user_id, User.where(role_id: 1).collect{ |u| [ u.name, u.id ] } %>
-    <br>
+        <%= f.label :status %>
+        <%= f.select :status_id, Status.all.collect{ |s| [ s.name, s.id ] }, class: 'form-control mb-3' %>
+        <br>
+        <%= f.label :user_id, 'Assigned Developer' %>
+        <%= f.select :user_id, User.where(role_id: 1).collect{ |u| [ u.name, u.id ] } %>
+        <br>
 
-    <%= f.label :target_resolution_date %>
-    <%= f.date_field :target_resolution_date, class: 'form-control' %>
-    <div class="form-group mt-2">
-      <div class='btn btn-success btn-icon-split'>
-        <div class="icon">
-          <div class="fas fa-check"></div>
+        <%= f.label :target_resolution_date %>
+        <%= f.date_field :target_resolution_date, class: 'form-control mb-3' %>
+        
+        <div class="form-group mt-2 d-flex justify-content-center">
+          <%= button_tag(class: 'btn btn-circle ok-btn btn-lg') do %>
+                  <i class="fas fa-check"></i>
+          <% end %>
+
+          <%= link_to @ticket, class: 'btn btn-circle delete-btn btn-lg' do %>
+            <i class="fas fa-times"></i>
+          <% end %>
         </div>
-        <%= f.submit class: 'btn btn-success'%>
-      </div>
-
-      <%= link_to @ticket, class: 'btn btn-danger btn-icon-split text-decoration-none' do %>
-        <div class="icon">
-          <div class="fas fa-times"></div>
-        </div>
-        <div class="text">Cancel</div>
       <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
