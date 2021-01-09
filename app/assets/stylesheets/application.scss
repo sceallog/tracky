@@ -147,6 +147,21 @@
   min-height: 81px;
 }
 
+.pagination {
+  .page-item > .page-link {
+    color: var(--main-text);
+  }
+
+  .page-item.disabled .page-link {
+    color: #858796;
+  }
+
+  li.active > .page-link {
+    color: #fff;
+    background-color: var(--main-colour);
+  }
+}
+
 // Styling for tables
 
 .content-table {

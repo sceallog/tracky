@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'comments/create'
   post 'users/edit', to: 'users#update'
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'signup' },
@@ -7,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :tickets, shallow: true do
-      resources :comments, only: [:create]
+      resources :comments, only: %i[create destroy]
     end
   end
 

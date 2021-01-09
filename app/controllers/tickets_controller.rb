@@ -57,7 +57,7 @@ class TicketsController < ApplicationController
   end
 
   def get_comments
-    @comments = Comment.where(ticket_id: @ticket.id)
+    @comments = Comment.where(ticket_id: @ticket.id).paginate(page: params[:page], per_page: 5)
   end
 
   # def set_developers

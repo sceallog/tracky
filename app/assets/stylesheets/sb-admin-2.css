@@ -32,6 +32,7 @@
   --danger: #e74a3b;
   --light: #f8f9fc;
   --dark: #5a5c69;
+  --main-text: #4f5058;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -78,7 +79,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #4f5058;
+  color: var(--main-text);
   text-align: left;
   background-color: #ecf0f3;
 }

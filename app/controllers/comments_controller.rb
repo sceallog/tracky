@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_ticket
+  before_action :set_ticket, except: %i[destroy]
   before_action :new, only: :create
 
   def new
@@ -14,6 +14,14 @@ class CommentsController < ApplicationController
       flash[:danger] = 'Could not create comment'
       redirect_to @ticket
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @ticket = @comment.ticket
+    @comment.destroy
+    redirect_to @ticket
+    flash[:success] = 'Comment deleted'
   end
 
   private

@@ -27,8 +27,8 @@
           </tr>
         <% end %>
         </tbody>
-
       </table>
+      <%= will_paginate(@projects, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end') %>
     </div>
   </div>
 </div>

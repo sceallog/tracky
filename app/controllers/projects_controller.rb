@@ -19,12 +19,12 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = current_user.projects
+    @projects = current_user.projects.paginate(page: params[:page])
     @open_tickets = @tickets.where(status: 1)
   end
 
   def show
-    @tickets = Ticket.where('project_id = ?', @project.id)
+    @tickets = Ticket.where('project_id = ?', @project.id).paginate(page: params[:page], per_page: 5)
   end
 
   def update
