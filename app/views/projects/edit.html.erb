@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <div class="card-header d-flex">
-      <h5 class="card-title mt-auto mb-auto">Edit Project <%= @project.name %></h5>
+      <h5 class="card-title mt-auto mb-auto"><%= t('strings.resources.edit_resource_with_name', resource: Project.model_name.human, name: @project.name) %></h5>
     </div>
     <div class="card-body">
       <%= form_with(model: @project, method: :put, local: true) do |f| %>

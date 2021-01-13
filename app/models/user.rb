@@ -9,6 +9,7 @@ class User < ApplicationRecord
   # validates :role, presence: true
 
   has_one_attached :avatar
+  belongs_to :locale
   belongs_to :role
   has_many :projects
   has_many :tickets

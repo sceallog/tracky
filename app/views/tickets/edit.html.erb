@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <div class="card-header d-flex">
-      <h5 class="card-title mt-auto mb-auto">Edit Ticket #<%= @ticket.id %></h5>
+      <h5 class="card-title mt-auto mb-auto"><%= t('strings.resources.edit_resource_with_id', resource: Ticket.model_name.human, id: @ticket.id) %></h5>
     </div>
     <div class="card-body">
       <%= form_with(model: @ticket, method: :put, local: true) do |f| %>
@@ -21,7 +21,7 @@
         <%= f.label :status %>
         <%= f.select :status_id, Status.all.collect{ |s| [ s.name, s.id ] }, class: 'form-control mb-3' %>
         <br>
-        <%= f.label :user_id, 'Assigned Developer' %>
+        <%= f.label :user_id, t('strings.tickets.assigned_developer') %>
         <%= f.select :user_id, User.where(role_id: 1).collect{ |u| [ u.name, u.id ] } %>
         <br>
 

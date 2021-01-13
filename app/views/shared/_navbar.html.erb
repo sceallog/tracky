@@ -5,10 +5,10 @@
     <div class="navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <%= link_to  "Home", root_path, class: 'nav-link' %>
+          <%= link_to  t('links.home'), root_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to  "Projects", projects_path, class: 'nav-link' %>
+          <%= link_to Project.model_name.human, projects_path, class: 'nav-link' %>
         </li>
       </ul>
     </div> 
@@ -17,8 +17,8 @@
     <ul class="navbar-nav ml-auto">
       <% if !(user_signed_in?) %>
         <div class="d-sm-flex align-items-center justify-content-between">
-          <%= link_to  "Login", new_user_session_path, class: 'btn btn-sm btn-outline-primary' %>&nbsp;&nbsp;
-          <%= link_to  "Signup", new_user_registration_path, class: 'btn btn-sm btn-outline-primary' %>&nbsp;&nbsp;
+          <%= link_to  t('links.login'), new_user_session_path, class: 'btn btn-sm btn-outline-primary' %>&nbsp;&nbsp;
+          <%= link_to  t('links.signup'), new_user_registration_path, class: 'btn btn-sm btn-outline-primary' %>&nbsp;&nbsp;
         </div>
       <% else %>
         <div class="topbar-divider d-none d-sm-block"></div>
@@ -37,20 +37,12 @@
                 aria-labelledby="userDropdown">
                 <%= link_to  edit_user_registration_path(current_user), class: 'dropdown-item' do %>
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
+                    <%= t('links.profile') %>
                 <% end %>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                </a>
                 <div class="dropdown-divider"></div>
                 <%= link_to  destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  <%= t('links.logout') %>
                 <% end %>
             </div>
         </li>

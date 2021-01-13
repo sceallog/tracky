@@ -5,7 +5,7 @@
     <div class="col-xl-4 col-lg-5">
       <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h5 class="card-title m-0">User Avatar</h5>
+          <h5 class="card-title m-0"><%= User.human_attribute_name('avatar') %></h5>
         </div>
         <!-- Card Body -->
         <div class="card-body">
@@ -15,7 +15,7 @@
           <%= form_with(model: @user, url: users_edit_url(@user), action: :update, method: :post, multipart: true) do |f| %>
             <div class="custom-file">
               <%= f.file_field :avatar, class: 'custom-file-input', onchange: 'this.form.submit();', accept: 'image/png,image/jpeg,image/svg' %>
-              <%= f.label :avatar, 'Change Avatar', class: 'custom-file-label' %>
+              <%= f.label :avatar, t('strings.resources.change_resource', resource: User.human_attribute_name('avatar')), class: 'custom-file-label' %>
             </div>
           <% end %>
         </div>
@@ -27,7 +27,7 @@
       <div class="card shadow mb-4">
         <!-- Card Header -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h5 class="card-title m-0">Profile</h5>
+          <h5 class="card-title m-0"><%= User.human_attribute_name('profile') %></h5>
         </div>
         <!-- Card Body -->
         <div class="card-body">
@@ -45,7 +45,7 @@
               <%= f.label :email %><br />
               <% if current_user.provider %>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', readonly: 'readonly' %>
-                <em>You cannot change your email address while logged in via a third party provider.</em>
+                <em><%= t('strings.third_party.no_change_email') %></em>
               <% else %>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
               <% end %>
@@ -53,8 +53,12 @@
             <br>
 
             <div class="field">
-              <%= f.label :role_id, "Role" %>
+              <%= f.label :role_id, Role.model_name.human %>
               <%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, selected: current_user.role.title %>
+            </div>
+            <div class="field">
+              <%= f.label :locale_id, Locale.model_name.human %>
+              <%= f.select :locale_id, Locale.all.collect{ |l| [l.language, l.id] }, selected: current_user.locale.language %>
             </div>
             <br>
 
@@ -86,7 +90,7 @@
             <% end %>
 
               <div class="actions d-flex justify-content-center">
-                <%= f.submit "Update", class: 'btn btn-success mt-3' %>
+                <%= f.submit class: 'btn btn-success mt-3' %>
               </div>
           <% end %>
         </div>

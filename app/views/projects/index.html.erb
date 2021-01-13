@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <div class="card-header d-flex justify-content-between">
-      <h4 class='card-title mt-auto mb-auto text-capitalize'>Your projects</h4>
+      <h4 class='card-title mt-auto mb-auto text-capitalize'><%= t('strings.resources.overview', resource: Project.model_name.human) %></h4>
       <div>
         <%= link_to new_project_path, class: 'btn btn-circle add-btn btn-lg mt-2' do %>
           <i class="fas fa-plus"></i>
@@ -13,9 +13,9 @@
       <table class='content-table table-sortable'>
         <thead class='text-uppercase'>
           <tr>
-            <th>Project Name</th>
-            <th>Description</th>
-            <th>Open Tickets</th>
+            <th><%= Project.human_attribute_name('name') %></th>
+            <th><%= Project.human_attribute_name('description') %></th>
+            <th><%= Project.human_attribute_name('open_tickets') %></th>
           </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
             <% end %>
           <% else %>
             <tr>
-              <td colspan="3" class="text-center">No projects yet</td>
+              <td colspan="3" class="text-center"><%= t('strings.no_resource_yet', resource: Project.model_name.human) %></td>
             </tr>
           <% end %>
         </tbody>

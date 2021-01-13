@@ -3,7 +3,7 @@
     <div class="col-mb-4">
       <div class="ticket-info card mr-3">
         <div class="card-header d-flex justify-content-between">
-          <h4 class="card-title mt-auto mb-auto">Details for Ticket #<%= @ticket.id %></h4>
+          <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.details_with_id', resource: Ticket.model_name.human, id: @ticket.id) %></h4>
           <div class="inline">
             <%= link_to project_path(@ticket.project_id), class: 'btn btn-circle back-btn btn-lg' do%>
               <i class="fas fa-arrow-left"></i>
@@ -21,55 +21,55 @@
             <div class="container ticket-info col">
               <div class="row">
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Ticket Title</p>
+                  <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('title') %></p>
                   <%= @ticket.title %>
                 </div>
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Ticket Description</p>
+                  <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('description') %></p>
                   <%= @ticket.description %>
                 </div>
               </div>
                 <hr>
               <div class="row">
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Assigned Developer</p>
+                  <p class="text-uppercase text-muted"><%= t('strings.tickets.assigned_developer') %></p>
                   <%= @ticket.user.name %>
                 </div>
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Submitter</p>
+                  <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('submitted_by') %></p>
                   <%= @ticket.submitted_by %>
                 </div>
               </div>
                 <hr>
               <div class="row">
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Project</p>
+                  <p class="text-uppercase text-muted"><%= Project.model_name.human %></p>
                   <%= link_to @ticket.project.name, project_path(@ticket.project.id) %>
                 </div>
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Ticket Priority</p>
+                  <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('priority') %></p>
                   <%= @ticket.priority.name %>
                 </div>
               </div>
                 <hr>
               <div class="row">
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Ticket Status</p>
+                  <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('status') %></p>
                   <%= @ticket.status.name %>
                 </div>
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Ticket Type</p>
+                  <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('type') %></p>
                   <div>Put type here</div>
                 </div>
               </div>
                 <hr>
               <div class="row">
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Created</p>
+                  <p class="text-uppercase text-muted"><%= t('datetime.created_at') %></p>
                   <%= @ticket.created_at.strftime("%Y/%m/%d %H:%M") %>
                 </div>
                 <div class="col-sm">
-                  <p class="text-uppercase text-muted">Updated</p>
+                  <p class="text-uppercase text-muted"><%= t('datetime.updated_at') %></p>
                   <%= @ticket.updated_at.strftime("%Y/%m/%d %H:%M") %>
                 </div>
               </div>
@@ -81,12 +81,12 @@
     <div class="col-mb-4">
       <div class="card">
         <div class="card-header d-flex">
-          <h4 class="card-title mt-auto mb-auto">Comments</h4>
+          <h4 class="card-title mt-auto mb-auto"><%= Comment.model_name.human %></h4>
         </div>
         <div class="card-body">
           <div class="ticket-comments-form form-inline">
             <%= form_with(model: @comment, url: ticket_comments_path(@ticket), method: :post, local: true) do |f| %>
-              <%= f.text_field :message, placeholder: 'Add a comment', class: 'form-control' %>
+              <%= f.text_field :message, placeholder: t('strings.comments.add_comment'), class: 'form-control' %>
                 <%= button_tag(class: 'btn btn-circle ok-btn') do %>
                   <i class="fas fa-check"></i>
                 <% end %>
@@ -96,9 +96,9 @@
             <table class='content-table table-sortable'>
               <thead class="text-uppercase">
                 <tr>
-                  <th>Commenter</th>
-                  <th>Message</th>
-                  <th>Created at</th>
+                  <th><%= Comment.human_attribute_name('commenter') %></th>
+                  <th><%= Comment.human_attribute_name('message') %></th>
+                  <th><%= t('datetime.created_at') %></th>
                   <td></td>
                 </tr>
               </thead>
@@ -118,7 +118,7 @@
                     <% end %>
                   <% else %>
                     <tr>
-                      <td colspan="4" class='text-center'>No comments yet</td>
+                      <td colspan="4" class='text-center'><%= t('strings.resources.no_resource_yet', resource: Comment.model_name.human) %></td>
                     </tr>
                   <% end %>
                 </tbody>
