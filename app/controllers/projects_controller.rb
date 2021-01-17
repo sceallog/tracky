@@ -10,10 +10,10 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      flash[:notice] = 'Project created'
+      flash[:notice] = t('strings.resources.created', resource: Project.model_name.human)
       redirect_to project_path(@project)
     else
-      flash[:alert] = 'Could not create the project'
+      flash[:alert] = t('strings.resources.not_created', resource: Project.model_name.human)
       render 'new'
     end
   end
@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      flash[:success] = 'Project updated'
+      flash[:success] = t('strings.resources.updated', resource: Project.model_name.human)
       redirect_to @project
     else
       render 'edit'
@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    flash[:success] = 'Project deleted'
+    flash[:success] = t('strings.resources.deleted', resource: Project.model_name.human)
     redirect_to projects_path
   end
 

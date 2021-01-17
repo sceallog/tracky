@@ -207,3 +207,9 @@ tr[data-href] {
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
   }
 }
+
+// Styling for file input
+
+.custom-file > * {
+  cursor: pointer;
+}

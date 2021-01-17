@@ -4054,6 +4054,10 @@ input[type="button"].btn-block {
   content: "Browse";
 }
 
+.custom-file-input:lang(ja) ~ .custom-file-label::after {
+  content: "選択";
+}
+
 .custom-file-input ~ .custom-file-label[data-browse]::after {
   content: attr(data-browse);
 }

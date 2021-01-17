@@ -192,6 +192,7 @@ ja:
     projects: プロジェクト
     profile: プロフィール
     signup: 新規登録
+    tickets: チケット
   number:
     currency:
       format:
@@ -245,10 +246,15 @@ ja:
       name: コメント
       add_comment: コメントを入力
     projects:
+      name: プロジェクト
       tickets_for: このプロジェクトのチケット
     resources:
       add_resource: "%{resource}の新規作成"
       change_resource: "%{resource}を変更する"
+      created: "%{resource}を作成しました。"
+      deleted: "%{resource}を削除しました。"
+      delete_really: "削除後は復活ができません。本当によろしいですか。"
+      delete_really_dependents: "%{resource}の全ての%{dependent}を削除します。削除後は復活ができません。本当によろしいですか。"
       details: "%{resource}の詳細"
       details_with_id: "%{resource}#%{id}の詳細"
       edit_resource: "%{resource}の編集"
@@ -256,6 +262,9 @@ ja:
       edit_resource_with_name: "%{resource}「%{name}」の編集"
       overview: "%{resource}一覧"
       no_resource_yet: "%{resource}がまだありません"
+      not_created: "%{resource}を作成できませんでした。"
+      not_found: "%{resource}を見つかりませんでした。"
+      updated: "%{resource}を更新しました。"
     third_party:
       no_change_email: 第三者プロバイダーによりログインされているため、変更はできません。
     tickets:

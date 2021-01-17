@@ -32,7 +32,7 @@
         <!-- Card Body -->
         <div class="card-body">
         
-          <%= form_with(model: @user, url: registration_path(@user), method: :put) do |f| %>
+          <%= form_with(model: @user, url: user_registration_path(@user), method: :put) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
 
             <div class="field">
@@ -54,11 +54,11 @@
 
             <div class="field">
               <%= f.label :role_id, Role.model_name.human %>
-              <%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, selected: current_user.role.title %>
+              <%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, selected: current_user.role.id %>
             </div>
             <div class="field">
               <%= f.label :locale_id, Locale.model_name.human %>
-              <%= f.select :locale_id, Locale.all.collect{ |l| [l.language, l.id] }, selected: current_user.locale.language %>
+              <%= f.select :locale_id, Locale.all.collect{ |l| [l.language, l.id] }, selected: current_user.locale.id %>
             </div>
             <br>
 

@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @ticket
     else
-      flash[:danger] = 'Could not create comment'
+      flash[:danger] = t('strings.resources.not_created', resource: Comment.model_name.human)
       redirect_to @ticket
     end
   end
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     @ticket = @comment.ticket
     @comment.destroy
     redirect_to @ticket
-    flash[:success] = 'Comment deleted'
+    flash[:success] = t('strings.resources.deleted', resource: Comment.model_name.human)
   end
 
   private

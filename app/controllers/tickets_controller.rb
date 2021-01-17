@@ -14,7 +14,7 @@ class TicketsController < ApplicationController
     @ticket.user_id = current_user.id
     @ticket.submitted_by = current_user.name
     if @ticket.save
-      flash[:notice] = 'Ticket created'
+      flash[:notice] = t('strings.resources.created', resource: Ticket.model_name.human)
       redirect_to @ticket
     else
       flash[:alert] = @ticket.errors.full_messages
@@ -28,7 +28,7 @@ class TicketsController < ApplicationController
 
   def update
     if @ticket.update(ticket_params)
-      flash[:success] = 'Ticket updated'
+      flash[:success] = t('strings.resources.updated', resource: Ticket.model_name.human)
       redirect_to @ticket
     else
       render 'edit'
@@ -39,7 +39,7 @@ class TicketsController < ApplicationController
     @project = @ticket.project
     @ticket.destroy
     respond_to do |format|
-      format.html { redirect_to @project, notice: 'Ticket deleted' }
+      format.html { redirect_to @project, notice: t('strings.resources.deleted', resource: Ticket.model_name.human) }
     end
   end
 
@@ -48,7 +48,7 @@ class TicketsController < ApplicationController
   def set_project
     @project = Project.where('user_id = ?', current_user.id).find(params[:project_id])
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = 'The project you were looking for could not be found.'
+    flash[:alert] = t('strings.resources.not_found', resource: Project.model_name.human)
     redirect_to root_path
   end
 
