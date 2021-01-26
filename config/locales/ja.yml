@@ -254,7 +254,7 @@ ja:
       created: "%{resource}を作成しました。"
       deleted: "%{resource}を削除しました。"
       delete_really: "削除後は復活ができません。本当によろしいですか。"
-      delete_really_dependents: "%{resource}の全ての%{dependent}を削除します。削除後は復活ができません。本当によろしいですか。"
+      delete_really_dependents: "この%{resource}の全ての%{dependent}も削除します。削除後は復活ができません。本当によろしいですか。"
       details: "%{resource}の詳細"
       details_with_id: "%{resource}#%{id}の詳細"
       edit_resource: "%{resource}の編集"

@@ -35,13 +35,12 @@
           <%= form_with(model: @user, url: user_registration_path(@user), method: :put) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
 
-            <div class="field">
+            <div class="form-group col-lg">
               <%= f.label :name %><br>
               <%= f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control' %>
             </div>
-            <br>
 
-            <div class="field">
+            <div class="form-group col-lg">
               <%= f.label :email %><br />
               <% if current_user.provider %>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', readonly: 'readonly' %>
@@ -50,15 +49,15 @@
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
               <% end %>
             </div>
-            <br>
+            <hr>
 
-            <div class="field">
+            <div class="form-group col-lg">
               <%= f.label :role_id, Role.model_name.human %>
-              <%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, selected: current_user.role.id %>
+              <%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, {selected: current_user.role.id}, class: 'form-control custom-select w-50 ml-2' %>
             </div>
-            <div class="field">
+            <div class="form-group col-lg">
               <%= f.label :locale_id, Locale.model_name.human %>
-              <%= f.select :locale_id, Locale.all.collect{ |l| [l.language, l.id] }, selected: current_user.locale.id %>
+              <%= f.select :locale_id, Locale.all.collect{ |l| [l.language, l.id] }, {selected: current_user.locale.id}, onchange: 'this.form.submit();', class: 'form-control custom-select w-50 ml-2' %>
             </div>
             <br>
 
@@ -67,7 +66,7 @@
             <% end %>
 
             <% unless current_user.provider %>
-              <div class="field">
+              <div class="form-group col-lg">
                 <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
                 <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
                 <% if @minimum_password_length %>
@@ -76,13 +75,13 @@
               </div>
               <br>
               
-              <div class="field">
+              <div class="form-group col-lg">
                 <%= f.label :password_confirmation %><br />
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
               </div>
               <br>
 
-              <div class="field">
+              <div class="form-group col-lg">
                 <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
                 <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
               </div> 
