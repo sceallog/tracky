@@ -18,5 +18,8 @@ module Tracky
 
     # Set the application's time zone to JST
     config.time_zone = 'Osaka'
+
+    # Set default language to English.
+    config.i18n.default_locale = :en
   end
 end

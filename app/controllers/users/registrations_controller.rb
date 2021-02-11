@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   # before_action :set_role, only: [:new]
   # before_action :configure_permitted_parameters
@@ -10,6 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     super do |_resource|
       @roles = Role.all
+      @locales = Locale.all
     end
   end
 
@@ -22,6 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit
     super do |_resource|
       @roles = Role.all
+      @locales = Locale.all
     end
   end
 
@@ -74,9 +76,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit(:locale_id, :role_id, :name, :email, :password, :password_confirmation, :avatar)
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

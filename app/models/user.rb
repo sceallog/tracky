@@ -21,6 +21,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.image = provider_data.info.image
       user.role_id = 1
+      user.locale_id = provider_data.extra.raw_info.locale.downcase.include?('ja') ? 2 : 1
     end
   end
 end
