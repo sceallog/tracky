@@ -61,14 +61,13 @@
             </div>
             <hr>
 
-            <h5><%= t('activerecord.attributes.user.change_password') %></h5>
-            <%# <i><%= t('activerecord.attributes.user.no_change_password', class: "text-sm")</i><br /> %> 
-
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-            <% end %>
-
             <% unless current_user.provider %>
+              <h5><%= t('activerecord.attributes.user.change_password') %></h5>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
               <div class="form-group col-lg">
                 <%= f.label :current_password %><br />
                 <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
