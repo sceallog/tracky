@@ -38,7 +38,9 @@ ja:
         type: タイプ
         priority: 重要度
       user:
+        change_password: パスワードの変更
         minimum_password_length: "長さは最低%{length}英数字"
+        new_password: 新しいパスワード
         no_change_password: 変更をしたくない場合は空欄のままにしてください
         password_for_change: 変更の確認用
         profile: プロフィール

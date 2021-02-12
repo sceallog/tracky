@@ -69,7 +69,9 @@ en:
         # type: タイプ
         # priority: 重要度
       user:
+        change_password: Change your password
         minimum_password_length: "%{length} characters minimum"
+        new_password: New password
         no_change_password: Leave blank if you do not want to change it
         password_for_change: We need your current password to confirm your changes
         # profile: プロフィール
