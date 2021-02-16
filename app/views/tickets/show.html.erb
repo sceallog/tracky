@@ -59,7 +59,11 @@
                 </div>
                 <div class="col-sm">
                   <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('type') %></p>
-                  <div>Put type here</div>
+                  <% if @ticket.type %>
+                    <%= @ticket.type.name %>
+                  <% else %>
+                    No type defined yet!
+                  <% end %>
                 </div>
               </div>
                 <hr>
