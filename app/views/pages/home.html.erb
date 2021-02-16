@@ -1,28 +1,85 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<div class="card col-md-6">
-  <div class="card-header">
-    <h5>Tickets by Status</h5>
+<div class="d-flex justify-content">
+  <div class="card col-md-4">
+    <div class="card-header">
+      <h5>Tickets by Status</h5>
+    </div>
+    <div class="card-body">
+      <canvas id="ticketsStatusChart" data-labels="<%= @status_names %>" data-tickets="<%= @tickets %>" data-progress ="<%= @progress_tickets %> data-resolved="<%= @resolved_tickets %>></canvas>
+    </div>
   </div>
-  <div class="card-body">
-    <canvas id="ticketsChart" data-labels="<%= @status_names %>" data-tickets="<%= @tickets %>" data-progress ="<%= @progress_tickets %> data-resolved="<%= @resolved_tickets %>></canvas>
+  <div class="card col-md-4">
+    <div class="card-header">
+      <h5>Tickets by Priority</h5>
+    </div>
+    <div class="card-body">
+      <canvas id="ticketsPriorityChart" data-labels="<%= @priorities %>" data-tickets="<%= @ticket_priorities %>"></canvas>
+    </div>
+  </div>
+  <div class="card col-md-4">
+    <div class="card-header">
+      <h5>Tickets by Type</h5>
+    </div>
+    <div class="card-body">
+      <canvas id="ticketsTypeChart" data-labels="<%= @types %>" data-tickets="<%= @ticket_types %>"></canvas>
+    </div>
   </div>
 </div>
 <script>
-  // Rails.ajax({
-  //   type: "GET",
-  //   dataType: 'json',
-  //   url: 'pages/home',
-  //   success: function(data){}
-  // });
-    const ctx = document.getElementById('ticketsChart');
-    const chart = new Chart(ctx, {
+    const ctx_1 = document.getElementById('ticketsStatusChart');
+    const statusChart = new Chart(ctx_1, {
       type: 'doughnut',
       data: {
-        labels: JSON.parse(ctx.dataset.labels), 
+        labels: JSON.parse(ctx_1.dataset.labels), 
         datasets: [{
-          data: JSON.parse(ctx.dataset.tickets),
+          data: JSON.parse(ctx_1.dataset.tickets),
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(30, 192, 92, 0.5)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+
+
+    const ctx_2 = document.getElementById('ticketsPriorityChart');
+    const priorityChart = new Chart(ctx_2, {
+      type: 'doughnut',
+      data: {
+        labels: JSON.parse(ctx_2.dataset.labels), 
+        datasets: [{
+          data: JSON.parse(ctx_2.dataset.tickets),
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(30, 192, 92, 0.5)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+
+    const ctx_3 = document.getElementById('ticketsTypeChart');
+    const typeChart = new Chart(ctx_3, {
+      type: 'doughnut',
+      data: {
+        labels: JSON.parse(ctx_3.dataset.labels), 
+        datasets: [{
+          data: JSON.parse(ctx_3.dataset.tickets),
           backgroundColor: [
             'rgba(255, 99, 132, 0.5)',
             'rgba(255, 206, 86, 0.5)',
