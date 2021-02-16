@@ -13,8 +13,10 @@ require("./sb-admin-2")
 require("./tablesort")
 require("./tableclick")
 require('noty')
+require('chart.js')
 
 window.Noty = require('noty');
+// var myChart = new Chart(ctx, {...});
 
 // Stylesheets
 // require("../../assets/stylesheets/application.scss")

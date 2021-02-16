@@ -1,2 +1,40 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="card col-md-6">
+  <div class="card-header">
+    <h5>Tickets by Status</h5>
+  </div>
+  <div class="card-body">
+    <canvas id="ticketsChart" data-labels="<%= @status_names %>" data-tickets="<%= @tickets %>" data-progress ="<%= @progress_tickets %> data-resolved="<%= @resolved_tickets %>></canvas>
+  </div>
+</div>
+<script>
+  // Rails.ajax({
+  //   type: "GET",
+  //   dataType: 'json',
+  //   url: 'pages/home',
+  //   success: function(data){}
+  // });
+    const ctx = document.getElementById('ticketsChart');
+    const chart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: JSON.parse(ctx.dataset.labels), 
+        datasets: [{
+          data: JSON.parse(ctx.dataset.tickets),
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(30, 192, 92, 0.5)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+</script>
