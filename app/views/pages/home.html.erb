@@ -1,29 +1,37 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<div class="d-flex justify-content">
-  <div class="card col-md-4">
-    <div class="card-header">
-      <h5>Tickets by Status</h5>
+<div class="container-fluid">
+  <div class="row row-cols-md-3 row-cols-1">
+    <div class="col-mb-4">
+      <div class="card">
+        <div class="card-header d-flex">
+          <h4 class="card-title mt-auto mb-auto">Tickets by Status</h4>
+        </div>
+        <div class="card-body">
+          <canvas id="ticketsStatusChart" data-labels="<%= @status_names %>" data-tickets="<%= @tickets %>" data-progress ="<%= @progress_tickets %> data-resolved="<%= @resolved_tickets %>></canvas>
+        </div>
+      </div>
     </div>
-    <div class="card-body">
-      <canvas id="ticketsStatusChart" data-labels="<%= @status_names %>" data-tickets="<%= @tickets %>" data-progress ="<%= @progress_tickets %> data-resolved="<%= @resolved_tickets %>></canvas>
+    <div class="col-mb-4">
+      <div class="card">
+        <div class="card-header d-flex">
+          <h4 class="card-title mt-auto mb-auto">Tickets by Priority</h4>
+        </div>
+        <div class="card-body">
+          <canvas id="ticketsPriorityChart" data-labels="<%= @priorities %>" data-tickets="<%= @ticket_priorities %>"></canvas>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="card col-md-4">
-    <div class="card-header">
-      <h5>Tickets by Priority</h5>
-    </div>
-    <div class="card-body">
-      <canvas id="ticketsPriorityChart" data-labels="<%= @priorities %>" data-tickets="<%= @ticket_priorities %>"></canvas>
-    </div>
-  </div>
-  <div class="card col-md-4">
-    <div class="card-header">
-      <h5>Tickets by Type</h5>
-    </div>
-    <div class="card-body">
-      <canvas id="ticketsTypeChart" data-labels="<%= @types %>" data-tickets="<%= @ticket_types %>"></canvas>
+    <div class="col-mb-4">
+      <div class="card">
+        <div class="card-header d-flex">
+          <h4 class="card-title mt-auto mb-auto">Tickets by Type</h4>
+        </div>
+        <div class="card-body">
+          <canvas id="ticketsTypeChart" data-labels="<%= @types %>" data-tickets="<%= @ticket_types %>"></canvas>
+        </div>
+      </div>
     </div>
   </div>
 </div>
