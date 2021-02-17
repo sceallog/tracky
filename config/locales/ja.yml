@@ -194,6 +194,8 @@ ja:
     home: ホーム
     login: ログイン
     logout: ログアウト
+    new_project: 新しいプロジェクト
+    new_ticket: 新しいチケット
     projects: プロジェクト
     profile: プロフィール
     signup: 新規登録

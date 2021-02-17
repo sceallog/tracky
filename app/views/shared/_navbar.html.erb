@@ -35,6 +35,10 @@
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">
+                <%= link_to  new_project_path, class: 'dropdown-item' do %>
+                    <i class="fas fa-folder fa-sm fa-fw mr-2 text-gray-400"></i>
+                    <%= t('links.new_project') %>
+                <% end %>
                 <%= link_to  edit_user_registration_path(current_user), class: 'dropdown-item' do %>
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     <%= t('links.profile') %>

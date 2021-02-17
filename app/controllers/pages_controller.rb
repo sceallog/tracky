@@ -1,36 +1,45 @@
 class PagesController < ApplicationController
   def home
     if current_user
-      @status_names = []
-      Status.find_each do |status|
-        @status_names.push(status.name)
-      end
-      @open_tickets = current_user.tickets.where(status_id: 1).count
-      @progress_tickets = current_user.tickets.where(status_id: 2).count
-      @resolved_tickets = current_user.tickets.where(status_id: 3).count
-      @info_needed_tickets = current_user.tickets.where(status_id: 4).count
-      @tickets = [@open_tickets, @progress_tickets, @resolved_tickets, @info_needed_tickets]
 
+      #Data for Ticket status chart.
+      @statuses = []
+      Status.find_each do |status|
+        @statuses.push(status.name)
+      end
+
+      @ticket_statuses = []
+      s = 1
+      while s <= Status.all.count do
+        @ticket_statuses.push(current_user.tickets.where(status_id: s).count)
+        s += 1
+      end
+
+      # Data for Ticket priority chart.
       @priorities = []
       Priority.find_each do |priority|
         @priorities.push(priority.name)
       end
 
-      @no_priority = current_user.tickets.where(priority_id: 1).count
-      @low_priority = current_user.tickets.where(priority_id: 2).count
-      @medium_priority = current_user.tickets.where(priority_id: 3).count
-      @high_priority = current_user.tickets.where(priority_id: 4).count
-      @ticket_priorities = [@no_priority, @low_priority, @medium_priority, @high_priority]
-
+      @ticket_priorities = []
+      p = 1
+      while p <= Priority.all.count do
+        @ticket_priorities.push(current_user.tickets.where(priority_id: p).count)
+        p += 1
+      end
+      
+      # Data for Ticket type charts.
       @types = []
       Type.find_each do |type|
         @types.push(type.name)
       end
 
-      @bugs = current_user.tickets.where(type_id: 4).count
-      @features = current_user.tickets.where(type_id: 5).count
-      @others = current_user.tickets.where(type_id: 6).count
-      @ticket_types = [@bugs, @features, @others]
+      @ticket_types = []
+      t = 1
+      while t <= Type.all.count do
+        @ticket_types.push(current_user.tickets.where(type_id: t+3).count)
+        t += 1
+      end
     end
 
     respond_to do |format|

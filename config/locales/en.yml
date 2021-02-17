@@ -225,6 +225,8 @@ en:
     home: Home
     login: Login
     logout: Logout
+    new_project: New project
+    new_ticket: New ticket
     projects: Projects
     profile: Profile
     signup: Sign up
