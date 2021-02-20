@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def home
+    @user = current_user
     if current_user
 
       #Data for Ticket status chart.
@@ -40,11 +41,10 @@ class PagesController < ApplicationController
         @ticket_types.push(current_user.tickets.where(type_id: t+3).count)
         t += 1
       end
+
+      @projects = Project.order(created_at: :asc).limit(5)
+      @tickets = Ticket.order(created_at: :desc).limit(5)
     end
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @open_tickets }
-    end
   end
 end

@@ -41,11 +41,11 @@
         </div>
         
         <div class="form-group mt-2 d-flex justify-content-center">
-          <%= button_tag(class: 'btn btn-circle ok-btn btn-lg') do %>
+          <%= button_tag(class: 'btn btn-circle ok-btn btn-lg', title: t('links.save'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } }) do %>
                   <i class="fas fa-check"></i>
           <% end %>
 
-          <%= link_to @ticket, class: 'btn btn-circle delete-btn btn-lg' do %>
+          <%= link_to @ticket, class: 'btn btn-circle delete-btn btn-lg', title: t('links.delete'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
             <i class="fas fa-times"></i>
           <% end %>
         </div>

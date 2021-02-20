@@ -10,6 +10,7 @@ ja:
       priority: 重要度
       role: 役職
       status: ステータス
+      type: タイプ
     attributes:
       comment:
         commenter: 登録者
@@ -191,6 +192,12 @@ ja:
       submit: 保存する
       update: 更新する
   links:
+    add: 追加
+    back: 戻る
+    cancel: キャンセル
+    delete: 削除
+    edit: 編集
+    save: 保存
     home: ホーム
     login: ログイン
     logout: ログアウト
@@ -277,6 +284,8 @@ ja:
     tickets:
       assigned_developer: 担当の開発者
       added_to_project: "このチケットはプロジェクト「%{name}」に追加されます"
+      charts:
+        by_attribute: "チケット数（%{attribute}順）"
       condensed_details: 詳細のまとめ
   support:
     array:

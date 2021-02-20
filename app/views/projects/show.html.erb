@@ -5,13 +5,13 @@
         <div class="card-header d-flex justify-content-between">
           <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.details_with_id', resource: Project.model_name.human, id: @project.id) %></h4>
           <div class="inline">
-            <%= link_to  projects_path, class: 'btn btn-circle btn-lg back-btn' do %>
+            <%= link_to  projects_path, class: 'btn btn-circle btn-lg back-btn', title: t('links.back'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
               <i class="fas fa-arrow-left"></i>
             <% end %>
-            <%= link_to edit_project_path(@project), class: 'btn btn-circle btn-lg edit-btn' do %>
+            <%= link_to edit_project_path(@project), class: 'btn btn-circle btn-lg edit-btn', title: t('links.edit'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
               <i class="fas fa-pen"></i>
             <% end %>
-            <%= link_to @project, method: :delete, data: { confirm: t('strings.resources.delete_really_dependents', resource: Project.model_name.human, dependent: Ticket.model_name.human)}, class: 'btn btn-circle btn-lg delete-btn' do %>
+            <%= link_to @project, method: :delete, title: t('links.delete'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 }, confirm: t('strings.resources.delete_really_dependents', resource: Project.model_name.human, dependent: Ticket.model_name.human)}, class: 'btn btn-circle btn-lg delete-btn' do %>
               <i class="fas fa-trash"></i>
             <% end %>
           </div>
@@ -64,7 +64,7 @@
             <h5 class="card-subtitle text-muted"><%= t('strings.tickets.condensed_details') %></h5>
           </div>
           <div>
-            <%= link_to new_project_ticket_path(@project), class: 'btn btn-circle btn-lg add-btn' do %>
+            <%= link_to new_project_ticket_path(@project), class: 'btn btn-circle btn-lg add-btn', title: t('links.add'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
               <i class="fas fa-plus"></i>
             <% end %>
           </div>

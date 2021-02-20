@@ -222,6 +222,11 @@ en:
   #     submit: 保存する
   #     update: 更新する
   links:
+    add: Add
+    back: Back
+    cancel: Cancel
+    delete: Delete
+    edit: Edit
     home: Home
     login: Login
     logout: Logout
@@ -229,6 +234,7 @@ en:
     new_ticket: New ticket
     projects: Projects
     profile: Profile
+    save: Save
     signup: Sign up
     tickets: Tickets
   # number:
@@ -308,6 +314,8 @@ en:
     tickets:
       # assigned_developer: 担当の開発者
       added_to_project: "This ticket will be added to the project '%{name}'"
+      charts:
+        by_attribute: "Tickets by %{attribute}"
       condensed_details: Condensed details
   # support:
   #   array:

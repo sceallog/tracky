@@ -30,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super do |_resource|
-      # @user = current_user
+      #@user = current_user
       if current_user.update(user_params)
         I18n.locale = current_user.locale.locale
         flash[:notice] = t('devise.registrations.updated')
@@ -38,7 +38,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
         I18n.locale = current_user.locale.locale
         flash[:alert] = t('devise.errors.messages.not_updated')
       end
-      redirect_to edit_user_registration_path(current_user) and return
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path) and return }
+      end
     end
   end
 

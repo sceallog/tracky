@@ -213,3 +213,14 @@ tr[data-href] {
 .custom-file > * {
   cursor: pointer;
 }
+
+// Styling for dropdown submenu
+
+.dropdown-submenu {
+  position: relative;
+  .dropdown-menu {
+    top: 0;
+    left: 100%;
+  }
+}
+
