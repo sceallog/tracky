@@ -7,8 +7,18 @@
         <li class="nav-item active">
           <%= link_to  t('links.home'), root_path, class: 'nav-link text-lg' %>
         </li>
-        <li class="nav-item">
-          <%= link_to t('links.projects'), projects_path, class: 'nav-link text-lg' %>
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link text-lg" href="#" id='projectDropdown' role='button' data-toggle='dropdown' title="<%= t('links.projects') %>"><%= t('links.projects') %></a>
+          <div class="dropdown-menu shadow animated--grow-in" aria-labelledby='projectDropdown'>
+            <%= link_to  projects_path, class: 'dropdown-item' do %>
+              <i class="fas fa-list-ul fa-sm fa-fw mr-2 text-gray-400"></i>
+              <%= t('strings.resources.overview', resource: Project.model_name.human) %>
+            <% end %>
+              <%= link_to  new_project_path, class: 'dropdown-item' do %>
+                <i class="fas fa-folder fa-sm fa-fw mr-2 text-gray-400"></i>
+                <%= t('links.new_project') %>
+            <% end %>
+          </div>
         </li>
       </ul>
     </div> 
@@ -46,10 +56,6 @@
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">
-                <%= link_to  new_project_path, class: 'dropdown-item' do %>
-                    <i class="fas fa-folder fa-sm fa-fw mr-2 text-gray-400"></i>
-                    <%= t('links.new_project') %>
-                <% end %>
                 <%= link_to  edit_user_registration_path(current_user), class: 'dropdown-item' do %>
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     <%= t('links.profile') %>

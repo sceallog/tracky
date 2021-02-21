@@ -305,6 +305,7 @@ en:
       edit_resource_with_id: "Edit %{resource} #%{id}"
       edit_resource_with_name: "Edit %{resource} '%{name}'"
       overview: "All your %{resource}s"
+      newest_resources: "Recently added %{resource}s"
       not_created: "Could not create the %{resource}."
       not_found: "Could not find the %{resource} you were looking for."
       no_resource_yet: "No %{resource}s yet"
