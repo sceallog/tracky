@@ -10,7 +10,7 @@ environment.plugins.append('Provide', new webpack.ProvidePlugin({
 environment.config.merge({
   resolve: {
     modules: [
-      'node_modules'
+      '../../node_modules'
     ],
   },
 });
