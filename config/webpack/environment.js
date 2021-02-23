@@ -7,11 +7,12 @@ environment.plugins.append('Provide', new webpack.ProvidePlugin({
   Popper: ['popper.js', 'default']
 }))
 
-module.exports = {
-  environment,
+environment.config.merge({
   resolve: {
-    modules: [
+    modules: {
       'node_modules'
-    ]
+    }
   }
-};
+});
+
+module.exports = environment
