@@ -18,16 +18,12 @@ types = Type.create([{ name: 'Bugs/Errors' }, { name: 'Feature Requests' }, { na
 
 locale_1 = Locale.first
 locale_1.language_en = 'English'
-locale_1.locale_en = 'en'
 locale_1.language_ja = '英語'
-locale_1.locale_ja = 'ja'
 locale_1.save
 
 locale_2 = Locale.second
 locale_2.language_en = 'Japanese'
-locale_2.locale_en = 'en'
 locale_2.language_ja = '日本語'
-locale_2.locale_ja = 'ja'
 locale_2.save
 
 role_1 = Role.first
