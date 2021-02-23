@@ -8,12 +8,14 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
-//require("./vendor/jquery.easing.min.js")
+require("./vendor/jquery.easing.min.js")
 require("./sb-admin-2")
 require("./tablesort")
 require("./tableclick")
 require('noty')
 require('chart.js')
+
+import $ from 'node_modules/jquery';
 
 window.Noty = require('noty');
 // var myChart = new Chart(ctx, {...});
