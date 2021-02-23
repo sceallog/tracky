@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
 require("bootstrap")
 //require("vendor/jquery.easing.min")
 require("./sb-admin-2")
@@ -15,7 +16,7 @@ require("./tableclick")
 require('noty')
 require('chart.js')
 
-import $ from 'jquery';
+//import $ from 'jquery';
 
 window.Noty = require('noty');
 // var myChart = new Chart(ctx, {...});
