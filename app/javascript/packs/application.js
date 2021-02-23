@@ -15,7 +15,7 @@ require("./tableclick")
 require('noty')
 require('chart.js')
 
-import $ from 'node_modules/jquery';
+import $ from 'jquery';
 
 window.Noty = require('noty');
 // var myChart = new Chart(ctx, {...});
