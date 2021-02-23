@@ -38,7 +38,7 @@ class PagesController < ApplicationController
       @ticket_types = []
       t = 1
       while t <= Type.all.count do
-        @ticket_types.push(current_user.tickets.where(type_id: t+3).count)
+        @ticket_types.push(current_user.tickets.where(type_id: t).count)
         t += 1
       end
 
