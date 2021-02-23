@@ -11,8 +11,8 @@ environment.config.merge({
   resolve: {
     modules: {
       'node_modules'
-    }
-  }
+    },
+  },
 });
 
 module.exports = environment
