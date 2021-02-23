@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_075107) do
+ActiveRecord::Schema.define(version: 2021_02_23_100019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2021_02_16_075107) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
-    t.text "message"
+    t.string "commenter", null: false
+    t.text "message", null: false
     t.bigint "ticket_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -79,13 +79,13 @@ ActiveRecord::Schema.define(version: 2021_02_16_075107) do
   end
 
   create_table "priorities", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.date "start_date"
+    t.string "name", null: false
+    t.text "description", null: false
+    t.date "start_date", null: false
     t.date "target_end_date"
     t.date "actual_end_date"
     t.datetime "created_at", precision: 6, null: false
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_075107) do
   end
 
   create_table "statuses", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
   end
 
   create_table "tickets", force: :cascade do |t|
