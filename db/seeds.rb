@@ -6,15 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Role.create([{ title: 'Developer' }, { title: 'Manager' }])
+roles = Role.create([{ title: 'Developer' }, { title: 'Manager' }])
 
-Status.create([{ name: 'Open' }, { name: 'In Progress' }, { name: 'Resolved' }, { name: 'Additional Info Required' }])
+statuses = Status.create([{ name: 'Open' }, { name: 'In Progress' }, { name: 'Resolved' }, { name: 'Additional Info Required' }])
 
-Priority.create([{ name: 'None' }, { name: 'Low' }, { name: 'Medium' }, { name: 'High' }])
+priorities = Priority.create([{ name: 'None' }, { name: 'Low' }, { name: 'Medium' }, { name: 'High' }])
 
-Locale.create([{ language: 'English', locale: 'en' }, { language: 'Japanese', locale: 'ja' }])
+locales = Locale.create([{ language: 'English', locale: 'en' }, { language: 'Japanese', locale: 'ja' }])
 
-Type.create([{ name: 'Bugs/Errors' }, { name: 'Feature Requests' }, { name: 'Other' }])
+types = Type.create([{ name: 'Bugs/Errors' }, { name: 'Feature Requests' }, { name: 'Other' }])
 
 locale_1 = Locale.first
 locale_1.language_en = 'English'
