@@ -30,7 +30,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super do |_resource|
-      #@user = current_user
       if current_user.update(user_params)
         I18n.locale = current_user.locale.locale
         flash[:notice] = t('devise.registrations.updated')
@@ -74,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def user_params
-    params.require(:user).permit(:name, :email, :locale_id, :role_id, :avatar)
+    params.require(:user).permit(:name, :email, :locale_id, :role_id, :avatar, :password, :password_confirmation, :current_password)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

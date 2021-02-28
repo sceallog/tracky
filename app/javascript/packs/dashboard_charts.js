@@ -2,7 +2,7 @@ const ctx_1 = document.getElementById('ticketsStatusChart');
 const statusChart = new Chart(ctx_1, {
   type: 'bar',
   data: {
-    labels: JSON.parse(ctx_1.dataset.labels), 
+    labels: JSON.parse(ctx_1.dataset.labels.toString()), 
     datasets: [{
       data: JSON.parse(ctx_1.dataset.tickets),
       backgroundColor: [
