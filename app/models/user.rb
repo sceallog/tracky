@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates :name, presence: true, length: { maximum: 70 }
-  # validates :role, presence: true
+  validates :role, presence: true
+  validates :locale, presence: true
 
   has_one_attached :avatar
   belongs_to :locale

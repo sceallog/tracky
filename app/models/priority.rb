@@ -3,8 +3,9 @@ class Priority < ApplicationRecord
   extend Mobility
   translates :name, type: :string
   
+  protected
+  # Get priorities' names for chart labels.
   def self.names_array 
-    # Get priorities' names for chart labels.
     priorities = []
     self.find_each do |priority|
       priorities.push(priority.name)
@@ -12,8 +13,8 @@ class Priority < ApplicationRecord
     priorities.to_s
   end
 
+  # Count the number of tickets for each priority and push them to ticket_priorities.
   def self.ticket_count(current_user)
-    # Count the number of tickets for each priority and push them to ticket_priorities.
     ticket_priorities = []
     p = 1
     while p <= self.all.count do

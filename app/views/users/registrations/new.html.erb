@@ -1,58 +1,52 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-xl-7 col-lg-6 col-md-9">
-      <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-              <div class="p-5">
-                  <div class="text-center">
-                      <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                  </div>
-                  <%= form_with(model: @user, url: user_registration_path, local: true, class: 'user') do |f| %>
-                    <div class="form-group">
-                      <%= f.text_field :name, class: 'form-control form-control-user', placeholder: true %>
-                    </div>
-                    <div class="form-group">
-                        <%= f.email_field :email, class: 'form-control form-control-user', placeholder: true %>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6 mb-3 mb-sm-0">
-                          <%= f.password_field :password, class: 'form-control form-control-user', placeholder: true %>
-                        </div>
-                        <div class="col-sm-6">
-                          <%= f.password_field :password_confirmation, class: 'form-control form-control-user', placeholder: true %>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                      <%= f.label :role_id %><br>
-                      <%= f.select(:role_id, options_for_select(@roles.map{ |r| [r.title, r.id] }), { wrapper: {} }, { class: 'custom-select mb-3 form-control' }) %>
-                    </div>
-                    <div class="form-group">
-                      <%= f.label :locale_id, Locale.model_name.human %><br>
-                      <%= f.select(:locale_id, options_for_select(@locales.map{ |l| [l.language, l.id] }), { wrapper: {} }, { class: 'custom-select mb-3 form-control' }) %>
-                    </div>
-                    <hr>
-                    <div class="form-group row justify-content-center">
-                      <%= f.submit "Register Account", class: 'btn btn-primary btn-user col-sm-6' %>
-                    </div>
-                    <div class="form-group row justify-content-center">
-                      <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-google btn-user col-sm-6' do %>
-                        <i class="fab fa-google fa-fw"></i> Register with Google
-                      <% end %>
-                    </div>
-                  <% end %>
-                  <hr>
-                  <div class="text-center">
-                    <%= link_to  "Forgot Password?", new_user_password_path, class: 'small' %>
-                  </div>
-                  <div class="text-center">
-                    <%= link_to  "Already have an account? Log in!", new_user_session_path, class: 'small' %>
-                  </div>
+      <div class="card o-hidden border-0 shadow-lg">
+        <div class="card-body p-0">
+          <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+            </div>
+            <%= form_with(model: @user, url: user_registration_path, local: true, class: 'user') do |f| %>
+              <div class="form-group">
+                <%= f.text_field :name, class: 'form-control form-control-user', placeholder: true %>
               </div>
+              <div class="form-group">
+                <%= f.email_field :email, class: 'form-control form-control-user', placeholder: true %>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <%= f.password_field :password, class: 'form-control form-control-user', placeholder: true %>
+                </div>
+                <div class="col-sm-6">
+                  <%= f.password_field :password_confirmation, class: 'form-control form-control-user', placeholder: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :role_id %><br>
+                <%= f.select(:role_id, options_for_select(@roles.map{ |r| [r.title, r.id] }), { wrapper: {} }, { class: 'custom-select mb-3 form-control' }) %>
+              </div>
+              <div class="form-group">
+                <%= f.label :locale_id, Locale.model_name.human %><br>
+                <%= f.select(:locale_id, options_for_select(@locales.map{ |l| [l.language, l.id] }), { wrapper: {} }, { class: 'custom-select mb-3 form-control' }) %>
+              </div>
+              <div class="form-group row justify-content-center">
+                <%= f.submit "Register Account", class: 'btn btn-primary btn-user col-sm-6' %>
+              </div>
+              <div class="form-group row justify-content-center">
+                <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-google btn-user col-sm-6' do %>
+                  <i class="fab fa-google fa-fw"></i> Register with Google
+                <% end %>
+              </div>
+            <% end %>
+            <hr>
+            <div class="text-center">
+              <%= link_to  "Already have an account? Log in!", new_user_session_path, class: 'small' %>
+            </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
 
-<%= render "devise/shared/links" %>

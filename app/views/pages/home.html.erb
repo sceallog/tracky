@@ -1,112 +1,15 @@
 <!-- Charts -->
-<div class="container-fluid">
-  <div class="row">
-      <div class="col-xl-4">
-        <div class="card">
-          <div class="card-header d-flex justify-content-center">
-            <h4 class="card-title mt-auto mb-auto"><%= t('strings.tickets.charts.by_attribute', attribute: Status.model_name.human) %></h4>
-          </div>
-          <div class="card-body">
-            <canvas id="ticketsStatusChart" data-labels="<%= @statuses %>" data-tickets="<%= @ticket_statuses %>"></canvas> 
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="card">
-          <div class="card-header d-flex justify-content-center">
-            <h4 class="card-title mt-auto mb-auto"><%= t('strings.tickets.charts.by_attribute', attribute: Priority.model_name.human) %></h4>
-          </div>
-          <div class="card-body">
-            <canvas id="ticketsPriorityChart" data-labels="<%= @priorities %>" data-tickets="<%= @ticket_priorities %>"></canvas>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-4">
-        <div class="card">
-          <div class="card-header d-flex justify-content-center">
-            <h4 class="card-title mt-auto mb-auto"><%= t('strings.tickets.charts.by_attribute', attribute: Type.model_name.human) %></h4>
-          </div>
-          <div class="card-body">
-            <canvas id="ticketsTypeChart" data-labels="<%= @types %>" data-tickets="<%= @ticket_types %>"></canvas>
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
+<%= render 'shared/charts' %>
 <hr>
 
 
-<!-- Projects List -->
 <div class="container-fluid">
   <div class="row">
-    <div class="latest-projects col-6">
-      <div class="card">
-        <div class="card-header d-flex justify-content-center">
-          <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.newest_resources', resource: Project.model_name.human) %></h4>
-        </div>
-        <div class="card-body">
-          <table class='content-table'>
-            <thead class="text-uppercase">
-              <tr>
-                <th><%= Project.human_attribute_name('name') %></th>
-                <th><%= t('datetime.created_at') %></th>
-              </tr>
-            </thead>
-              <tbody>
-                <% unless @projects.empty? %>
-                  <% @projects.each do |p| %>
-                    <tr data-href=<%= project_url(p.id)%>>
-                      <td><%= p.name %></td>
-                      <td><%= p.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-                    </tr>
-                  <% end %>
-                <% else %>
-                  <tr>
-                    <td colspan="2" class='text-center'><%= t('strings.resources.no_resource_yet', resource: Project.model_name.human.downcase) %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  <!-- Projects List -->
+    <%= render 'shared/latest_projects' %>
 
-    <!-- Tickets List -->
-    <div class="latest-tickets col-6">
-      <div class="card">
-        <div class="card-header d-flex justify-content-center">
-          <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.newest_resources', resource: Ticket.model_name.human) %></h4>
-        </div>
-        <div class="card-body">
-          <table class='content-table'>
-            <thead class='text-uppercase'>
-              <tr>
-                <th><%= Ticket.human_attribute_name('title') %></th>
-                <th><%= t('strings.tickets.assigned_developer') %></th>
-                <th><%= Ticket.human_attribute_name('status') %></th>
-                <th><%= Ticket.human_attribute_name('date_identified') %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% unless @tickets.empty? %>
-                <% @tickets.each do |t| %>
-                  <tr data-href=<%= ticket_url(t.id) %>>
-                    <td><%= t.title %></td>
-                    <td><%= t.user.name %></td>
-                    <td><%= t.status.name %></td>
-                    <td><%= t.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-                  </tr>
-                <% end %>
-              <% else %>
-                <tr>
-                  <td colspan="4" class="text-center"><%= t('strings.resources.no_resource_yet', resource: Ticket.model_name.human) %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  <!-- Tickets List -->
+    <%= render 'shared/latest_tickets' %>
   </div>
 </div>
 <%= javascript_pack_tag 'dashboard_charts' %>

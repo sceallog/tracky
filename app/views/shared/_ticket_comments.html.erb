@@ -1,0 +1,50 @@
+<div class="col-mb-4">
+  <div class="card">
+    <div class="card-header d-flex">
+      <h4 class="card-title mt-auto mb-auto"><%= t('strings.comments.name') %></h4>
+    </div>
+    <div class="card-body">
+      <div class="ticket-comments-form form-inline">
+        <%= form_with(model: @comment, url: ticket_comments_path(@ticket), method: :post, local: true) do |f| %>
+          <%= f.text_field :message, placeholder: t('strings.comments.add_comment'), class: 'form-control' %>
+          <%= button_tag(class: 'btn btn-circle ok-btn', title: t('links.save'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } }) do %>
+              <i class="fas fa-check"></i>
+            <% end %>
+        <% end %>
+      </div>
+      <div class="ticket-comments">
+        <table class='content-table table-sortable'>
+          <thead class="text-uppercase">
+            <tr>
+              <th><%= Comment.human_attribute_name('commenter') %></th>
+              <th><%= Comment.human_attribute_name('message') %></th>
+              <th><%= t('datetime.created_at') %></th>
+              <td></td>
+            </tr>
+          </thead>
+            <tbody>
+              <% unless @comments.empty? %>
+                <% @comments.each do |c| %>
+                  <tr>
+                    <td><%= c.commenter %></td>
+                    <td><%= c.message %></td>
+                    <td><%= c.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+                    <td>
+                    <%= link_to comment_path(c.id), method: :delete, title: t('links.delete'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 }, confirm: t('strings.resources.delete_really') }, class: 'btn btn-circle delete-btn btn-sm' do %>
+                        <i class="fas fa-trash"></i>
+                    <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% else %>
+                <tr>
+                  <td colspan="4" class='text-center'><%= t('strings.resources.no_resource_yet', resource: Comment.model_name.human.downcase) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+        <%= will_paginate(@comments, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end') %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-header d-flex justify-content-center">
+            <h4 class="card-title mt-auto mb-auto"><%= t('strings.tickets.charts.by_attribute', attribute: Status.model_name.human) %></h4>
+          </div>
+          <div class="card-body">
+            <canvas id="ticketsStatusChart" data-labels="<%= @statuses %>" data-tickets="<%= @ticket_statuses %>"></canvas> 
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-header d-flex justify-content-center">
+            <h4 class="card-title mt-auto mb-auto"><%= t('strings.tickets.charts.by_attribute', attribute: Priority.model_name.human) %></h4>
+          </div>
+          <div class="card-body">
+            <canvas id="ticketsPriorityChart" data-labels="<%= @priorities %>" data-tickets="<%= @ticket_priorities %>"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-header d-flex justify-content-center">
+            <h4 class="card-title mt-auto mb-auto"><%= t('strings.tickets.charts.by_attribute', attribute: Type.model_name.human) %></h4>
+          </div>
+          <div class="card-body">
+            <canvas id="ticketsTypeChart" data-labels="<%= @types %>" data-tickets="<%= @ticket_types %>"></canvas>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

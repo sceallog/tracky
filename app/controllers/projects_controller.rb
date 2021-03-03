@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.build(project_params)
     if @project.save
       flash[:notice] = t('strings.resources.created', resource: Project.model_name.human)
-      redirect_to project_path(@project)
+      redirect_to @project
     else
       flash[:alert] = t('strings.resources.not_created', resource: Project.model_name.human)
       render 'new'

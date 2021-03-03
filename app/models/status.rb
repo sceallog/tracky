@@ -3,6 +3,7 @@ class Status < ApplicationRecord
   extend Mobility
   translates :name, type: :string
 
+  protected
   # Get statuses' names for chart labels.
   def self.names_array
     statuses = []

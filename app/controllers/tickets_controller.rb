@@ -3,7 +3,6 @@ class TicketsController < ApplicationController
   before_action :set_project, only: %i[new create index]
   before_action :set_ticket, except: %i[new create index]
   before_action :get_comments, only: [:show]
-  # before_action :get_developers, only: %i[new update]
 
   def new
     @ticket = @project.tickets.build
@@ -11,7 +10,6 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = @project.tickets.build(ticket_params)
-    @ticket.user_id = current_user.id
     @ticket.submitted_by = current_user.name
     if @ticket.save
       flash[:notice] = t('strings.resources.created', resource: Ticket.model_name.human)
@@ -60,13 +58,8 @@ class TicketsController < ApplicationController
     @comments = Comment.where(ticket_id: @ticket.id).paginate(page: params[:page], per_page: 5)
   end
 
-  # def set_developers
-  #   User.where(role_id: 1).find_each do |dev|
-  #     @developers =
-  #   @developers = User.where('role_id = ?', Role.find_by(title: 'Developer'))
-  # end
-
   def ticket_params
-    params.require(:ticket).permit(:title, :description, :date_identified, :submitted_by, :related_project_id, :status_id, :priority_id, :type_id, :target_resolution_date, :actual_resolution_date, :resolution_summary, :updated_by, :user_id)
+    params.require(:ticket).permit(:title, :description, :date_identified, :submitted_by, :related_project_id, :status_id, :priority_id, :type_id,
+                                   :target_resolution_date, :actual_resolution_date, :resolution_summary, :updated_by, :user_id)
   end
 end

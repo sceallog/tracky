@@ -24,10 +24,10 @@
                               <%= f.label :remember_me, class: 'custom-control-label' %>
                             </div>
                           </div>
+                          <br>
                           <div class="form-group row justify-content-center">
                             <%= f.submit 'Login', class: 'btn btn-primary btn-user col-sm-6' %>
                           </div>
-                          <hr>
                           <div class="form-group row justify-content-center">
                             <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-google btn-user col-sm-6' do %>
                             <i class="fab fa-google fa-fw"></i> Login with Google
@@ -35,9 +35,6 @@
                           </div>
                       <% end %>
                       <hr>
-                      <div class="text-center">
-                        <%= link_to  "Forgot Password?", new_user_password_path, class: 'small' %>
-                      </div>
                       <div class="text-center">
                         <%= link_to  "Create an Account!", new_user_registration_path, class: 'small' %>
                       </div>

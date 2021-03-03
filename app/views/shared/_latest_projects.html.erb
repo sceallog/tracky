@@ -1,0 +1,31 @@
+<div class="latest-projects col-6">
+  <div class="card">
+    <div class="card-header d-flex justify-content-center">
+      <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.newest_resources', resource: Project.model_name.human) %></h4>
+    </div>
+    <div class="card-body">
+      <table class='content-table'>
+        <thead class="text-uppercase">
+          <tr>
+            <th><%= Project.human_attribute_name('name') %></th>
+            <th><%= t('datetime.created_at') %></th>
+          </tr>
+        </thead>
+          <tbody>
+            <% unless @projects.empty? %>
+              <% @projects.each do |p| %>
+                <tr data-href=<%= project_url(p.id)%>>
+                  <td><%= p.name %></td>
+                  <td><%= p.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td colspan="2" class='text-center'><%= t('strings.resources.no_resource_yet', resource: Project.model_name.human.downcase) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>

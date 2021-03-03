@@ -1,0 +1,82 @@
+<div class="col-mb-4">
+  <div class="ticket-info card mr-3">
+    <div class="card-header d-flex justify-content-between">
+      <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.details_with_id', resource: Ticket.model_name.human, id: @ticket.id) %></h4>
+      <div class="inline">
+        <%= link_to project_path(@ticket.project_id), class: 'btn btn-circle back-btn btn-lg', data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } }, title: t('links.back') do%>
+          <i class="fas fa-arrow-left"></i>
+        <% end %>
+        <%= link_to edit_ticket_path(@ticket), class: 'btn btn-circle edit-btn btn-lg', data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } }, title: t('links.edit') do %>
+          <i class="fas fa-pen"></i>
+        <% end %>
+        <%= link_to @ticket, method: :delete, title: t('links.delete'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 }, confirm: t('strings.resources.delete_really_dependents', resource: Ticket.model_name.human, dependent: Comment.model_name.human) }, class: 'btn btn-circle delete-btn btn-lg' do %>
+            <i class="fas fa-trash"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="ticket-details row">
+        <div class="container ticket-info col">
+          <div class="row">
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('title') %></p>
+              <%= @ticket.title %>
+            </div>
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('description') %></p>
+              <%= @ticket.description %>
+            </div>
+          </div>
+            <hr>
+          <div class="row">
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= t('strings.tickets.assigned_developer') %></p>
+              <%= @ticket.user.name %>
+            </div>
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('submitted_by') %></p>
+              <%= @ticket.submitted_by %>
+            </div>
+          </div>
+            <hr>
+          <div class="row">
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= Project.model_name.human %></p>
+              <%= link_to @ticket.project.name, project_path(@ticket.project.id) %>
+            </div>
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('priority') %></p>
+              <%= @ticket.priority.name %>
+            </div>
+          </div>
+            <hr>
+          <div class="row">
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('status') %></p>
+              <%= @ticket.status.name %>
+            </div>
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('type') %></p>
+              <% if @ticket.type %>
+                <%= @ticket.type.name %>
+              <% else %>
+                No type defined yet!
+              <% end %>
+            </div>
+          </div>
+            <hr>
+          <div class="row">
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= t('datetime.created_at') %></p>
+              <%= @ticket.created_at.strftime("%Y/%m/%d %H:%M") %>
+            </div>
+            <div class="col-sm">
+              <p class="text-uppercase text-muted"><%= t('datetime.updated_at') %></p>
+              <%= @ticket.updated_at.strftime("%Y/%m/%d %H:%M") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

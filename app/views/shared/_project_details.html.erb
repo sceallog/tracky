@@ -1,0 +1,54 @@
+<div class="project-info card mr-3">
+  <div class="card-header d-flex justify-content-between">
+    <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.details_with_id', resource: Project.model_name.human, id: @project.id) %></h4>
+    <div class="inline">
+      <%= link_to  projects_path, class: 'btn btn-circle btn-lg back-btn', title: t('links.back'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+      <%= link_to edit_project_path(@project), class: 'btn btn-circle btn-lg edit-btn', title: t('links.edit'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
+        <i class="fas fa-pen"></i>
+      <% end %>
+      <%= link_to @project, method: :delete, title: t('links.delete'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 }, confirm: t('strings.resources.delete_really_dependents', resource: Project.model_name.human, dependent: Ticket.model_name.human)}, class: 'btn btn-circle btn-lg delete-btn' do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="project-details row">
+      <div class="container project-info col">
+        <div class="row">
+          <div class="col-sm">
+            <p class="text-uppercase text-muted"><%= Project.human_attribute_name('name') %></p>
+            <%= @project.name %>
+          </div>
+          <div class="col-sm">
+            <p class="text-uppercase text-muted"><%= Project.human_attribute_name('description') %></p>
+            <%= @project.description %>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm">
+            <p class="text-uppercase text-muted"><%= Project.human_attribute_name('start_date') %></p>
+            <%= @project.start_date.strftime("%Y/%m/%d") %>
+          </div>
+          <div class="col-sm">
+            <p class="text-uppercase text-muted"><%= Project.human_attribute_name('target_end_date') %></p>
+            <%= @project.target_end_date.strftime("%Y/%m/%d") %>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm">
+            <p class="text-uppercase text-muted"><%= t('datetime.created_at') %></p>
+            <%= @project.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </div>
+          <div class="col-sm">
+            <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('submitted_by') %></p>
+            <%= @project.user.name %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

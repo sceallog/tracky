@@ -90,3 +90,208 @@ type_3 = Type.third
 type_3.name_en = 'Other'
 type_3.name_ja = 'その他'
 type_3.save
+
+demo_dev = User.create!(name: 'Demo Developer', email: 'demo.dev@example.com', password: 'trackydemo', password_confirmation: 'trackydemo', role_id: 1, locale_id: 1)
+demo_manager = User.create!(name: 'John Smith', email: 'jsmith@example.com', password: 'trackydemo', password_confirmation: 'trackydemo', role_id: 2, locale_id: 1)
+user_1 = User.create!(name: 'Takeshi Yamada', email: 'tyamada@example.com', password: 'trackydemo', password_confirmation: 'trackydemo', role_id: 1, locale_id: 2)
+
+
+demo_project = Project.create!(name: 'Tracky', description: 'A tracking web app for programming projects.', start_date: 8.days.ago, target_end_date: 4.weeks.from_now, user_id: demo_manager.id)
+
+Ticket.create!([{
+                title: 'Implement users and projects', 
+                description: 'Allow users to sign up, login, and edit their profiles', 
+                date_identified: 8.days.ago , 
+                submitted_by: demo_manager.name, 
+                target_resolution_date: 7.days.ago, 
+                actual_resolution_date: 7.days.ago, 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_4.id, 
+                type_id: type_2.id
+                },
+                {
+                title: 'Add tickets to projects', 
+                description: 'Allow users to create tickets for projects', 
+                date_identified: 8.days.ago , 
+                submitted_by: demo_manager.name, 
+                target_resolution_date: 7.days.ago, 
+                actual_resolution_date: 7.days.ago, 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_4.id, 
+                type_id: type_2.id
+                },
+                {
+                title: 'Add comments to tickets', 
+                description: "Allow users to add comments to tickets and show them in the corresponding ticket's view", 
+                date_identified: 8.days.ago , 
+                submitted_by: demo_manager.name, 
+                target_resolution_date: 7.days.ago, 
+                actual_resolution_date: 7.days.ago, 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_4.id, 
+                type_id: type_2.id
+                },
+                {
+                title: 'Create delete dependency between projects & tickets', 
+                description: 'Have all tickets of a project deleted when that project gets deleted', 
+                date_identified: 7.days.ago , 
+                submitted_by: demo_dev.name, 
+                target_resolution_date: 7.days.ago, 
+                actual_resolution_date: 7.days.ago, 
+                user_id: user_1.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_4.id, 
+                type_id: type_3.id
+                },
+                {
+                title: 'Create delete dependency between tickets & comments', 
+                description: 'Have all comments on a ticket deleted when that ticket gets deleted', 
+                date_identified: 7.days.ago , 
+                submitted_by: demo_dev.name, 
+                target_resolution_date: 7.days.ago, 
+                actual_resolution_date: 7.days.ago, 
+                user_id: user_1.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_4.id, 
+                type_id: type_3.id
+                },
+                {
+                title: 'Allow users to change ordering of table contents', 
+                description: "Give users the option to select in which order they would like to see tables such as a project's tickets", 
+                date_identified: 7.days.ago , 
+                submitted_by: user_1.name, 
+                target_resolution_date: 5.days.ago, 
+                actual_resolution_date: 6.days.ago, 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_2.id, 
+                type_id: type_3.id
+                },
+                {
+                title: 'Make everything look nice', 
+                description: 'Give the site a nice layout', 
+                date_identified: 7.days.ago , 
+                submitted_by: demo_manager.name, 
+                target_resolution_date: 6.days.ago, 
+                actual_resolution_date: 7.days.ago, 
+                user_id: user_1.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_2.id, 
+                type_id: type_3.id
+                },
+                {
+                title: 'Internationalisation', 
+                description: "Add Japanese translations and change the app's code so that the website can be shown either in English or Japanese", 
+                date_identified: 6.days.ago , 
+                submitted_by: demo_manager.name, 
+                target_resolution_date: 3.days.ago, 
+                actual_resolution_date: 3.days.ago, 
+                user_id: user_1.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_3.id, 
+                type_id: type_3.id
+                },
+                {
+                title: 'Implement a dashboard view', 
+                description: "Show info such as open tickets, the number of tickets for each priority, etc. for the logged-in user and make that view the site's root", 
+                date_identified: 6.days.ago , 
+                submitted_by: demo_manager.name, 
+                target_resolution_date: 5.days.ago, 
+                actual_resolution_date: 5.days.ago, 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_4.id, 
+                type_id: type_3.id
+                },
+                {
+                title: 'Add pagination to all tables', 
+                description: 'Have all tables paginate after a sensible amount of items', 
+                date_identified: 6.days.ago , 
+                submitted_by: user_1.name, 
+                target_resolution_date: 5.days.ago, 
+                actual_resolution_date: 4.days.ago, 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_1.id, 
+                type_id: type_2.id
+                },
+                {
+                title: 'Add roles for users', 
+                description: 'Implement different roles such as developer or manager for users and integrate selection fields for them in forms where necessary', 
+                date_identified: 6.days.ago , 
+                submitted_by: demo_manager.name, 
+                target_resolution_date: 6.days.ago, 
+                actual_resolution_date: 5.days.ago, 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_4.id, 
+                type_id: type_2.id
+                },
+                {
+                title: 'Add status, priority, and type to tickets', 
+                description: 'Give tickets a status on their progress, a priority on how urgent they need to be addressed, and types to divide them by;
+                             integrate selection fields for them in forms and show them in corresponding views', 
+                date_identified: 6.days.ago , 
+                submitted_by: demo_manager.name, 
+                target_resolution_date: 6.days.ago, 
+                actual_resolution_date: 5.days.ago, 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_4.id, 
+                type_id: type_2.id
+                },
+                {
+                title: "Display selections in a user's language", 
+                description: "Have selection menus like roles and language selection display their contents in the user's current language", 
+                date_identified: 5.days.ago , 
+                submitted_by: demo_dev.name, 
+                target_resolution_date: 4.days.ago, 
+                actual_resolution_date: 4.days.ago, 
+                user_id: user_1.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_3.id, 
+                type_id: type_3.id
+                },
+                {
+                title: 'Refactor code in the controllers and models', 
+                description: 'Clean up the code in the controllers and move logic to models where feasible', 
+                date_identified: 4.days.ago , 
+                submitted_by: demo_dev.name, 
+                target_resolution_date: 2.days.ago, 
+                actual_resolution_date: '', 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_2.id, 
+                priority_id: priority_1.id, 
+                type_id: type_3.id
+                },
+                {
+                title: "The charts on the dash aren't working", 
+                description: "The charts on the dashboard aren't showing anymore!", 
+                date_identified: 2.days.ago , 
+                submitted_by: user_1.name, 
+                target_resolution_date: 2.days.ago, 
+                actual_resolution_date: 2.days.ago, 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_3.id, 
+                priority_id: priority_4.id, 
+                type_id: type_1.id
+                },
+              )

@@ -1,106 +1,10 @@
 <div class="container-fluid">
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col-mb-4">
-      <div class="project-info card mr-3">
-        <div class="card-header d-flex justify-content-between">
-          <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.details_with_id', resource: Project.model_name.human, id: @project.id) %></h4>
-          <div class="inline">
-            <%= link_to  projects_path, class: 'btn btn-circle btn-lg back-btn', title: t('links.back'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
-              <i class="fas fa-arrow-left"></i>
-            <% end %>
-            <%= link_to edit_project_path(@project), class: 'btn btn-circle btn-lg edit-btn', title: t('links.edit'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
-              <i class="fas fa-pen"></i>
-            <% end %>
-            <%= link_to @project, method: :delete, title: t('links.delete'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 }, confirm: t('strings.resources.delete_really_dependents', resource: Project.model_name.human, dependent: Ticket.model_name.human)}, class: 'btn btn-circle btn-lg delete-btn' do %>
-              <i class="fas fa-trash"></i>
-            <% end %>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="project-details row">
-            <div class="container project-info col">
-              <div class="row">
-                <div class="col-sm">
-                  <p class="text-uppercase text-muted"><%= Project.human_attribute_name('name') %></p>
-                  <%= @project.name %>
-                </div>
-                <div class="col-sm">
-                  <p class="text-uppercase text-muted"><%= Project.human_attribute_name('description') %></p>
-                  <%= @project.description %>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm">
-                  <p class="text-uppercase text-muted"><%= Project.human_attribute_name('start_date') %></p>
-                  <%= @project.start_date.strftime("%Y/%m/%d") %>
-                </div>
-                <div class="col-sm">
-                  <p class="text-uppercase text-muted"><%= Project.human_attribute_name('target_end_date') %></p>
-                  <%= @project.target_end_date %>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm">
-                  <p class="text-uppercase text-muted"><%= t('datetime.created_at') %></p>
-                  <%= @project.created_at.strftime("%Y/%m/%d %H:%M") %>
-                </div>
-                <div class="col-sm">
-                  <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('submitted_by') %></p>
-                  <%= @project.user.name %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render 'shared/project_details' %>
     </div>
     <div class="col-mb-4">
-      <div class="ticket-info card">
-        <div class="card-header d-flex justify-content-between">
-          <div>
-            <h4 class="card-title"><%= t('strings.projects.tickets_for') %></h4>
-            <h5 class="card-subtitle text-muted"><%= t('strings.tickets.condensed_details') %></h5>
-          </div>
-          <div>
-            <%= link_to new_project_ticket_path(@project), class: 'btn btn-circle btn-lg add-btn', title: t('links.add'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
-              <i class="fas fa-plus"></i>
-            <% end %>
-          </div>
-        </div>
-        <div class="card-body">
-          <table class='content-table table-sortable'>
-            <thead class='text-uppercase'>
-              <tr>
-                <th><%= Ticket.human_attribute_name('title') %></th>
-                <th><%= Ticket.human_attribute_name('submitted_by') %></th>
-                <th><%= t('strings.tickets.assigned_developer') %></th>
-                <th><%= Ticket.human_attribute_name('status') %></th>
-                <th><%= Ticket.human_attribute_name('date_identified') %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% unless @tickets.empty? %>
-                <% @tickets.each do |t| %>
-                  <tr data-href=<%= ticket_url(t.id) %>>
-                    <td><%= t.title %></td>
-                    <td><%= t.submitted_by %></td>
-                    <td><%= t.user.name %></td>
-                    <td><%= t.status.name %></td>
-                    <td><%= t.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-                  </tr>
-                <% end %>
-              <% else %>
-                <tr>
-                  <td colspan="5" class="text-center"><%= t('strings.resources.no_resource_yet', resource: Ticket.model_name.human) %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <%= will_paginate(@tickets, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end') %>
-        </div>
-      </div>
+      <%= render 'shared/project_tickets' %>
     </div>
   </div>
 </div>
