@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, except: %i[new create index]
-  before_action :set_tickets, only: %i[index]
 
   def new
     @project = current_user.projects.build
@@ -19,12 +18,11 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = current_user.projects.paginate(page: params[:page])
-    @open_tickets = @tickets.where(status: 1)
+    @projects = current_user.projects.paginate(page: params[:page], per_page: 10)
   end
 
   def show
-    @tickets = Ticket.where('project_id = ?', @project.id).paginate(page: params[:page], per_page: 5)
+    @tickets = Ticket.where(project_id: @project.id).paginate(page: params[:page], per_page: 5)
   end
 
   def update
@@ -46,10 +44,9 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
-  end
-
-  def set_tickets
-    @tickets = Ticket.all
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = t('strings.resources.not_found', resource: Project.model_name.human)
+    redirect_to root_path
   end
 
   def project_params

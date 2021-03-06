@@ -96,7 +96,7 @@ demo_manager = User.create!(name: 'John Smith', email: 'jsmith@example.com', pas
 user_1 = User.create!(name: 'Takeshi Yamada', email: 'tyamada@example.com', password: 'trackydemo', password_confirmation: 'trackydemo', role_id: 1, locale_id: 2)
 
 
-demo_project = Project.create!(name: 'Tracky', description: 'A tracking web app for programming projects.', start_date: 8.days.ago, target_end_date: 4.weeks.from_now, user_id: demo_manager.id)
+demo_project = Project.create!(name: 'Tracky', description: 'A tracking web app for programming projects.', start_date: 8.days.ago, target_end_date: 4.weeks.from_now, user_id: demo_manager.id, created_at: 8.days.ago)
 
 Ticket.create!([{
                 title: 'Implement users and projects', 
@@ -256,8 +256,8 @@ Ticket.create!([{
                 type_id: type_2.id
                 },
                 {
-                title: "Display selections in a user's language", 
-                description: "Have selection menus like roles and language selection display their contents in the user's current language", 
+                title: "Display selection items in a user's language", 
+                description: "Have selection menus like roles and language selection show their contents in the user's current language", 
                 date_identified: 5.days.ago , 
                 submitted_by: demo_dev.name, 
                 target_resolution_date: 4.days.ago, 
@@ -285,13 +285,173 @@ Ticket.create!([{
                 title: "The charts on the dash aren't working", 
                 description: "The charts on the dashboard aren't showing anymore!", 
                 date_identified: 2.days.ago , 
-                submitted_by: user_1.name, 
+                submitted_by: demo_manager.name, 
                 target_resolution_date: 2.days.ago, 
                 actual_resolution_date: 2.days.ago, 
                 user_id: demo_dev.id, 
                 project_id: demo_project.id, 
-                status_id: status_3.id, 
+                status_id: status_4.id, 
                 priority_id: priority_4.id, 
                 type_id: type_1.id
                 },
-              )
+                {
+                title: "Add a demo user", 
+                description: "Add a demo user for potential users to try the app before signing up.", 
+                date_identified: 1.days.ago , 
+                submitted_by: demo_manager.name, 
+                target_resolution_date: 2.days.from_now, 
+                actual_resolution_date: '', 
+                user_id: demo_dev.id, 
+                project_id: demo_project.id, 
+                status_id: status_4.id, 
+                priority_id: priority_3.id, 
+                type_id: type_2.id
+                },
+              ])
+Comment.create!([{
+								commenter: demo_dev.name,
+								message: "User login and signup work",
+								ticket_id: Ticket.find_by(title: "Implement users and projects").id
+								},
+								{
+								commenter: user_1.name,
+								message: "Projects are in, too",
+								ticket_id: Ticket.find_by(title: "Implement users and projects").id
+								},
+								{
+								commenter: demo_dev.name,
+								message: "Added the profile edit page",
+								ticket_id: Ticket.find_by(title: "Implement users and projects").id
+								},
+								{
+								commenter: demo_dev.name,
+                message: "Added Ticket model and migrated the database",
+								ticket_id: Ticket.find_by(title: "Add tickets to projects").id
+								},
+								{
+								commenter: user_1.name,
+                message: "Added new and edit views",
+								ticket_id: Ticket.find_by(title: "Add tickets to projects").id
+								},
+								{
+								commenter: user_1.name,
+                message: "Added overview of a project's tickets to that project's show page",
+								ticket_id: Ticket.find_by(title: "Add tickets to projects").id
+								},
+								{
+                commenter: demo_dev.name,
+								message: "Added the Comment model and migrated the database",
+                ticket_id: Ticket.find_by(title: "Add comments to tickets").id
+								},
+								{
+                commenter: demo_dev.name,
+								message: "Added a form for new comments and a table with all comments of a ticket to the ticket show page",
+                ticket_id: Ticket.find_by(title: "Add comments to tickets").id
+								},
+                {
+                commenter: demo_dev.name,
+                message: "Added necessary JavaScript for all tables",
+                ticket_id: Ticket.find_by(title: "Allow users to change ordering of table contents").id
+                },
+                {
+                commenter: demo_dev.name,
+                message: "Completely overhauled the site's layout and structure",
+                ticket_id: Ticket.find_by(title: "Make everything look nice").id
+                },
+                {
+                commenter: demo_manager.name,
+                message: "Let's make the prominent colour some kind of teal",
+                ticket_id: Ticket.find_by(title: "Make everything look nice").id
+                },
+                {
+                commenter: demo_dev.name,
+                message: "Changed the colour, plus all tables look nicer. The rows are clickable, too.",
+                ticket_id: Ticket.find_by(title: "Make everything look nice").id
+                },
+                {
+                commenter: demo_manager.name,
+                message: "Looks good, but the buttons are odd. Please fix them.",
+                ticket_id: Ticket.find_by(title: "Make everything look nice").id
+                },
+                {
+                commenter: user_1.name,
+                message: "Fixed the buttons.",
+                ticket_id: Ticket.find_by(title: "Make everything look nice").id
+                },
+                {
+                commenter: user_1.name,
+                message: "All strings are localised.",
+                ticket_id: Ticket.find_by(title: "Internationalisation").id
+                },
+                {
+                commenter: demo_dev.name,
+                message: "The locale change logic works, but switching the language doesn't yet.",
+                ticket_id: Ticket.find_by(title: "Internationalisation").id
+                },
+                {
+                commenter: demo_dev.name,
+                message: "Switching the language works now.",
+                ticket_id: Ticket.find_by(title: "Internationalisation").id
+                },
+                {
+                commenter: user_1.name,
+                message: "Fixed a problem with flash messages' translations not showing correctly.",
+                ticket_id: Ticket .find_by(title: "Internationalisation").id
+                },
+                {
+                commenter: demo_dev.name,
+                message: "All tables paginate, the amount of items shown at once depends on the page.",
+                ticket_id: Ticket.find_by(title: "Add pagination to all tables").id
+                },
+                {
+                commenter: user_1.name,
+                message: "Role and language selectors show in the correct language.",
+                ticket_id: Ticket.find_by(title: "Display selection items in a user's language").id
+                },
+                {
+                commenter: user_1.name,
+                message: "Importance, type, and status of tickets now also show in the correct language.",
+                ticket_id: Ticket.find_by(title: "Display selection items in a user's language").id
+                },
+                {
+                commenter: demo_dev.name,
+                message: "Added tables with info on recently added projects and tickets.",
+                ticket_id: Ticket.find_by(title: "Implement a dashboard view").id
+                },
+                {
+                commenter: demo_manager.name,
+                message: "Can I get some charts showing the numbers of tickets according to status etc., please?",
+                ticket_id: Ticket.find_by(title: "Implement a dashboard view").id
+                },
+                {
+                commenter: demo_dev.name,
+                message: "Done.",
+                ticket_id: Ticket.find_by(title: "Implement a dashboard view").id
+                },
+                {
+                commenter: demo_manager.name,
+                message: "Thanks. Could you change the colours so they look a little more vibrant?",
+                ticket_id: Ticket.find_by(title: "Implement a dashboard view").id
+                },
+                {
+                commenter: demo_dev.name,
+                message: "Moved most of the logic in the pages controller to the according models.",
+                ticket_id: Ticket.find_by(title: "Refactor code in the controllers and models").id
+                },
+                {
+                commenter: demo_dev.name,
+                message: "Refactored logic to find a project's open tickets from the view(!!!) into the Project model.",
+                ticket_id: Ticket.find_by(title: "Refactor code in the controllers and models").id
+                },
+                {
+                commenter: demo_manager.name,
+                message: "Since the refactoring, the charts arent't working anymore. Can someone please fix this asap?",
+                ticket_id: Ticket.find_by(title: "The charts on the dash aren't working").id
+                },
+                {
+                commenter: user_1.name,
+                message: "Fixed it. The values weren't returned correctly because of the move.",
+                ticket_id: Ticket.find_by(title: "The charts on the dash aren't working").id
+                }
+
+])
