@@ -96,7 +96,7 @@ demo_manager = User.create!(name: 'John Smith', email: 'jsmith@example.com', pas
 user_1 = User.create!(name: 'Takeshi Yamada', email: 'tyamada@example.com', password: 'trackydemo', password_confirmation: 'trackydemo', role_id: 1, locale_id: 2)
 
 
-demo_project = Project.create!(name: 'Tracky', description: 'A tracking web app for programming projects.', start_date: 8.days.ago, target_end_date: 4.weeks.from_now, user_id: demo_manager.id, created_at: 8.days.ago)
+demo_project = Project.create!(name: 'Tracky', description: 'A tracking web app for programming projects.', start_date: 8.days.ago, target_end_date: 4.weeks.from_now, user_id: demo_dev.id, created_at: 8.days.ago)
 
 Ticket.create!([{
                 title: 'Implement users and projects', 
@@ -109,7 +109,8 @@ Ticket.create!([{
                 project_id: demo_project.id, 
                 status_id: status_3.id, 
                 priority_id: priority_4.id, 
-                type_id: type_2.id
+                type_id: type_2.id,
+                created_at: 8.days.ago
                 },
                 {
                 title: 'Add tickets to projects', 
@@ -303,7 +304,7 @@ Ticket.create!([{
                 actual_resolution_date: '', 
                 user_id: demo_dev.id, 
                 project_id: demo_project.id, 
-                status_id: status_4.id, 
+                status_id: status_1.id, 
                 priority_id: priority_3.id, 
                 type_id: type_2.id
                 },

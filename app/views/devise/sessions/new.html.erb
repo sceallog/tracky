@@ -34,9 +34,17 @@
                             <% end %>
                           </div>
                       <% end %>
+                      <!-- Login as the demo user -->
+                      <%= form_with(model: @user, url: user_session_path, local: true, class: 'user') do |f| %>
+                          <div class="form-group row justify-content-center">
+                            <%= f.email_field :email, value: Rails.application.credentials.dig(:demo_dev, :demo_dev_email), readonly: true, hidden: true %>
+                            <%= f.password_field :password, value: Rails.application.credentials.dig(:demo_dev, :demo_dev_password), readonly: true, hidden: true %>
+                            <%= f.submit 'Login as Demo User', class: 'btn btn-info btn-user col-sm-6 ' %>
+                          </div>
+                      <% end %>
                       <hr>
                       <div class="text-center">
-                        <%= link_to  "Create an Account!", new_user_registration_path, class: 'small' %>
+                        <%= link_to  "Create an Account!", new_user_registration_path %>
                       </div>
                   </div>
                 </div>
