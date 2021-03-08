@@ -123,9 +123,12 @@ ja:
         didn_t_receive_confirmation_instructions: アカウント確認のメールを受け取っていませんか？
         didn_t_receive_unlock_instructions: アカウントのロック解除方法のメールを受け取っていませんか？
         forgot_your_password: パスワードを忘れましたか？
+        have_account: 登録済の方はこちらからログイン
         sign_in: ログイン
+        sign_in_demo_dev: デモユーザーとしてログイン
         sign_in_with_provider: "%{provider}でログイン"
         sign_up: アカウント登録
+        sign_up_with_provider: "%{provider}で登録"
       minimum_password_length: "（%{count}字以上）"
     unlocks:
       new:

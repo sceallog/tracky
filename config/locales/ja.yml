@@ -259,9 +259,13 @@ ja:
     comments:
       name: コメント
       add_comment: コメントを入力
+    login:
+      heading: ログイン
     projects:
       name: プロジェクト
       tickets_for: このプロジェクトのチケット
+    registration:
+      heading: アカウント登録
     resources:
       add_resource: "%{resource}の新規作成"
       change_resource: "%{resource}を変更する"

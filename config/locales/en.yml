@@ -289,6 +289,8 @@ en:
     comments:
       name: Comments
       add_comment: Add a comment
+    login:
+      greeting: Welcome Back!
     projects:
       name: Projects
       tickets_for: Tickets for this project

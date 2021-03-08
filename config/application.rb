@@ -20,6 +20,6 @@ module Tracky
     config.time_zone = 'Osaka'
 
     # Set default language to English.
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :ja
   end
 end
