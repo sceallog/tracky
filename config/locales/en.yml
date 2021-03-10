@@ -41,6 +41,7 @@ en:
       priority: Priority
       role: Role
       status: Status
+      type: Type
     attributes:
       comment:
         commenter: Commenter
@@ -75,7 +76,7 @@ en:
         new_password: New password
         no_change_password: Leave blank if you do not want to change it
         password_for_change: We need your current password to confirm your changes
-        # profile: プロフィール
+        profile: Profile
   #   errors:
   #     messages:
   #       record_invalid: "バリデーションに失敗しました: %{errors}"
@@ -137,7 +138,7 @@ en:
   #     - :day
   datetime:
     created_at: Added on
-  #   updated_at: 更新日
+    updated_at: Last updated
   #   distance_in_words:
   #     about_x_hours:
   #       one: 約1時間
@@ -316,7 +317,7 @@ en:
     third_party:
       no_change_email: You cannot change your email address while logged in via a third-party provider.
     tickets:
-      # assigned_developer: 担当の開発者
+      assigned_developer: Assigned developer
       added_to_project: "This ticket will be added to the project '%{name}'"
       charts:
         by_attribute: "Tickets by %{attribute}"
