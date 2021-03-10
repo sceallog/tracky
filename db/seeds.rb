@@ -91,7 +91,7 @@ type_3.name_en = 'Other'
 type_3.name_ja = 'その他'
 type_3.save
 
-demo_dev = User.create!(name: 'Demo Developer', email: 'demo.dev@example.com', password: 'trackydemo', password_confirmation: 'trackydemo', role_id: 1, locale_id: 1)
+demo_dev = User.create!(name: 'Demo Developer', email: 'demo.dev@example.com', password: 'trackydemo', password_confirmation: 'trackydemo', role_id: 1, locale_id: 2)
 demo_manager = User.create!(name: 'John Smith', email: 'jsmith@example.com', password: 'trackydemo', password_confirmation: 'trackydemo', role_id: 2, locale_id: 1)
 user_1 = User.create!(name: 'Takeshi Yamada', email: 'tyamada@example.com', password: 'trackydemo', password_confirmation: 'trackydemo', role_id: 1, locale_id: 2)
 
