@@ -21,7 +21,7 @@ class TicketsController < ApplicationController
   end
 
   def index
-    @tickets = Ticket.where('project_id = ?', @project.id)
+    @tickets = Ticket.where(project_id: @project.id)
   end
 
   def update
@@ -44,7 +44,7 @@ class TicketsController < ApplicationController
   private
 
   def set_project
-    @project = Project.where('user_id = ?', current_user.id).find(params[:project_id])
+    @project = Project.where(user_id: current_user.id).find(params[:project_id])
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = t('strings.resources.not_found', resource: Project.model_name.human)
     redirect_to root_path
