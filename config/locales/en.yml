@@ -33,41 +33,42 @@
 en:
   activerecord:
     models:
-      # user: ユーザ
-      # comment: コメント
+      user: User
+      comment: Comment
       locale: Language
-      # project: プロジェクト
-      # ticket: チケット
-      # priority: 重要度
-      # role: 役目
-      # status: ステータス
+      project: Project
+      ticket: Ticket
+      priority: Priority
+      role: Role
+      status: Status
     attributes:
-      # comment:
-      #   commenter: 登録者
-      #   message: メッセージ
+      comment:
+        commenter: Commenter
+        message: Message
+        created_at: Added on
       locale:
-        # language: 言語
-        # english: 英語
-        # japanese: 日本語
+        language: Language
+        english: English
+        japanese: Japanese
       project:
         name: Title
-        # description: 内容
-        # start_date: 開始日
-        # target_end_date: 終了日（目的）
-        # actual_end_date: 終了日（実際）
-        # open_tickets: 未解決のチケット数
-        # submitted_by: 登録者
+        description: Description
+        start_date: Start date
+        target_end_date: End date (target)
+        actual_end_date: End date (actual)
+        open_tickets: No. of open tickets
+        submitted_by: Submitted by
       ticket:
-        # title: タイトル
-        # description: 詳細
-        # date_identified: 発見日
-        # submitted_by: 登録者
-        # target_resolution_date: 終了日（目的）
-        # actual_resolution_date: 終了日（実際）
-        # resolution_summary: 解決のまとめ
-        # status: ステータス
-        # type: タイプ
-        # priority: 重要度
+        title: Title
+        description: Details
+        date_identified: Added on
+        submitted_by: Submitted by
+        target_resolution_date: Resolution date (target)
+        actual_resolution_date: Resolution date (actual)
+        resolution_summary: Resolution summary
+        status: Status
+        type: Type
+        priority: Priority
       user:
         change_password: Change your password
         minimum_password_length: "%{length} characters minimum"
@@ -134,8 +135,8 @@ en:
   #     - :year
   #     - :month
   #     - :day
-  # datetime:
-  #   created_at: 作成日
+  datetime:
+    created_at: Added on
   #   updated_at: 更新日
   #   distance_in_words:
   #     about_x_hours:

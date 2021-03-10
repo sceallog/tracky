@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: %i[sign_up, sign_in]
   before_action :configure_permitted_parameters, if: :devise_controller?
-  around_action :switch_locale, except: %i[sign_up, sign_in]
+  around_action :switch_locale
 
   def switch_locale(&action)
     locale = current_user.try(:locale) || I18n.default_locale 
