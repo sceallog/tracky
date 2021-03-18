@@ -30,11 +30,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super do |_resource|
-      if current_user.update(user_params)
+      if current_user.save
         I18n.locale = current_user.locale.locale
         flash[:notice] = t('devise.registrations.updated')
       else
-        I18n.locale = current_user.locale.locale
+        # I18n.locale = current_user.locale.locale
         flash[:alert] = t('devise.errors.messages.not_updated')
       end
       respond_to do |format|
@@ -61,6 +61,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def set_role
     self.role_id = 1 if provider
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
   # def configure_permitted_parameters

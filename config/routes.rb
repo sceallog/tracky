@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post 'users/edit', to: 'users#update'
+  get 'users/index', to: 'users#index'
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'signup' },
                      controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }

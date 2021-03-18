@@ -1,0 +1,21 @@
+<div class="card-body col-md-8 ml-auto mr-auto">
+  <table class='content-table table-sortable'>
+    <thead class='text-uppercase'>
+      <tr>
+        <th><%= User.human_attribute_name('name') %></th>
+        <th><%= Role.model_name.human %></th>
+        <th><%= Locale.model_name.human %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr> 
+          <td><%= user.name %></td>
+          <td><%= user.role.title %></td>
+          <td><%= user.locale.language %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate(@users, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end') %>
+</div>
