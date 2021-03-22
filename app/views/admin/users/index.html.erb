@@ -5,14 +5,18 @@
         <th><%= User.human_attribute_name('name') %></th>
         <th><%= Role.model_name.human %></th>
         <th><%= Locale.model_name.human %></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr> 
           <td><%= user.name %></td>
-          <td><%= user.role.title %></td>
+          <%= form_with(model: [:admin, user], method: :patch) do |f| %>
+            <td><%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, {selected: user.role.id}, onchange: 'this.form.submit();', class: 'custom-select' %></td> 
+          <% end %>
           <td><%= user.locale.language %></td>
+          <td><%= link_to  "Delete", user_registration_path(user.id), method: :delete, data: { confirm: t('strings.resources.delete_really') } %></td>
         </tr>
       <% end %>
     </tbody>

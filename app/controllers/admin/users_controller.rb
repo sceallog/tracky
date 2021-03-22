@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
   def show; end
 
   def update
-    if @user.save
+    if @user.update(user_update_params)
       I18n.locale = current_user.locale.locale
       flash[:notice] = t('strings.resources.updated', resource: Role.model_name.human)
     else
@@ -22,5 +22,9 @@ class Admin::UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def user_update_params
+    params.require(:user).permit(:role_id)
   end
 end

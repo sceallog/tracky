@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   post 'users/edit', to: 'users#update'
-  get 'users/index', to: 'users#index'
+  put 'users/edit', to: 'users#update'
 
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', edit: 'profile', sign_up: 'signup' },
                      controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     resources :tickets, shallow: true do
       resources :comments, only: %i[create destroy]
     end
+  end
+
+  namespace :admin do
+    get 'admin/users', to: 'admin/users#index'
+    resources :users
   end
 
   root to: 'pages#home'

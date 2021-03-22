@@ -22,7 +22,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     super do |_resource|
-      @roles = Role.all
+      @user = current_user
+      @role_sign = `#{Role.model_name.human}  #{@user.role.title}`
       @locales = Locale.all
     end
   end

@@ -77,8 +77,9 @@ en:
         no_change_password: Leave blank if you do not want to change it
         password_for_change: We need your current password to confirm your changes
         profile: Profile
-  #   errors:
-  #     messages:
+    errors:
+      messages:
+        not_updated: "Could not update %{resource}."
   #       record_invalid: "バリデーションに失敗しました: %{errors}"
   #       restrict_dependent_destroy:
   #         has_one: "%{record}が存在しているので削除できません"
