@@ -3,7 +3,7 @@
     <div class="card-header d-flex">
       <h4 class="card-title mt-auto mb-auto"><%= t('strings.comments.name') %></h4>
     </div>
-    <div class="card-body">
+    <div class="">
       <div class="ticket-comments-form form-inline">
         <%= form_with(model: @comment, url: ticket_comments_path(@ticket), method: :post, local: true) do |f| %>
           <%= f.text_field :message, placeholder: t('strings.comments.add_comment'), class: 'form-control' %>

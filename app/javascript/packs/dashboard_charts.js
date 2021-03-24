@@ -6,10 +6,10 @@ const statusChart = new Chart(ctx_1, {
     datasets: [{
       data: JSON.parse(ctx_1.dataset.tickets),
       backgroundColor: [
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(255, 206, 86, 0.5)',
-        'rgba(30, 192, 92, 0.5)',
-        'rgba(0, 50, 192, 0.5)'
+        'rgba(231, 74, 59, 0.8)',
+        'rgba(78, 115, 223, 0.8)',
+        'rgba(28, 200, 138, 0.8)',
+        'rgba(253, 126, 20, 0.8)'
       ],
       borderWidth: 1
     }]
@@ -38,10 +38,10 @@ const priorityChart = new Chart(ctx_2, {
     datasets: [{
       data: JSON.parse(ctx_2.dataset.tickets),
       backgroundColor: [
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(255, 206, 86, 0.5)',
-        'rgba(30, 192, 92, 0.5)',
-        'rgba(0, 50, 192, 0.5)'
+        'rgba(133, 135, 150, 0.8)',
+        'rgba(255, 206, 86, 0.8)',
+        'rgba(253, 126, 20, 0.8)',
+        'rgba(231, 74, 59, 0.8)'
       ],
       borderWidth: 1
     }]
@@ -69,9 +69,9 @@ const typeChart = new Chart(ctx_3, {
     datasets: [{
       data: JSON.parse(ctx_3.dataset.tickets),
       backgroundColor: [
-        'rgba(255, 99, 132, 0.5)',
-        'rgba(255, 206, 86, 0.5)',
-        'rgba(30, 192, 92, 0.5)'
+        'rgba(231, 74, 59, 0.8)',
+        'rgba(32, 201, 166, 0.8)',
+        'rgba(54, 185, 204, 0.8)'
       ],
       borderWidth: 1
     }]

@@ -56,7 +56,7 @@
               <%# <%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, {selected: current_user.role.id}, class: 'form-control custom-select w-50 ml-2' %> 
             </div>
             <div class="form-group col-lg">
-              <%= f.label :locale_id, Locale.model_name.human %>
+              <%= f.label :locale_id, Locale.model_name.human %><br />
               <%= f.select :locale_id, Locale.all.collect{ |l| [l.language, l.id] }, {selected: current_user.locale.id}, onchange: 'this.form.submit();', class: 'form-control custom-select w-50 ml-2' %>
             </div>
             <hr>

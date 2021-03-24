@@ -1,25 +1,45 @@
-<div class="card-body col-md-8 ml-auto mr-auto">
-  <table class='content-table table-sortable'>
-    <thead class='text-uppercase'>
-      <tr>
-        <th><%= User.human_attribute_name('name') %></th>
-        <th><%= Role.model_name.human %></th>
-        <th><%= Locale.model_name.human %></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr> 
-          <td><%= user.name %></td>
-          <%= form_with(model: [:admin, user], method: :patch) do |f| %>
-            <td><%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, {selected: user.role.id}, onchange: 'this.form.submit();', class: 'custom-select' %></td> 
+<div class="container">
+  <div class="card">
+    <div class="card-header d-flex">
+      <h4 class="card-title mt-auto mb-auto text-capitalize"><%= t('strings.resources.overview', resource: User.model_name.human) %></h4>
+    </div>
+    <div class="">
+      <table class='content-table table-sortable'>
+        <thead class='text-uppercase'>
+          <tr>
+            <th><%= User.human_attribute_name('name') %></th>
+            <th><%= Role.model_name.human %></th>
+            <th class='admin-status-title'><%= User.human_attribute_name('admin') %></th>
+            <th><%= Locale.model_name.human %></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr> 
+              <td><%= user.name %></td>
+              <%= form_with(model: [:admin, user], method: :patch) do |f| %>
+                <td><%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, {selected: user.role.id}, onchange: 'this.form.submit();', class: 'custom-selector' %></td> 
+                <%# <td class="admin-check-col"><%= f.check_box :admin, onchange: 'this.form.submit();', class: 'custom-control custom-checkbox' %></td>
+              <% end %>
+              <td class="admin-status-col">
+                <% if user.admin? %>
+                  <i class="fas fa-check yes-admin"></i>
+                <% else %>
+                  <i class="fas fa-times no-admin"></i>
+                <% end %>
+              </td>
+              <td><%= user.locale.language %></td>
+              <td>
+              <%= link_to user_registration_path(user.id), method: :delete, title: t('links.delete'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 }, confirm: t('strings.resources.delete_really') }, class: 'btn btn-circle delete-btn btn-sm' do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+              </td>
+            </tr>
           <% end %>
-          <td><%= user.locale.language %></td>
-          <td><%= link_to  "Delete", user_registration_path(user.id), method: :delete, data: { confirm: t('strings.resources.delete_really') } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= will_paginate(@users, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end') %>
+        </tbody>
+      </table>
+      <%= will_paginate(@users, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end') %>
+    </div>
+  </div>
 </div>

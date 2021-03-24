@@ -46,19 +46,19 @@
             </div>
             <div class="col-sm">
               <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('priority') %></p>
-              <%= @ticket.priority.name %>
+              <div class="priority-pill-<%= @ticket.priority.id %> show-ticket-priority"><%= @ticket.priority.name %></div>
             </div>
           </div>
             <hr>
           <div class="row">
             <div class="col-sm">
               <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('status') %></p>
-              <%= @ticket.status.name %>
+              <div class="status-pill-<%= @ticket.status.id %> show-ticket-status"><%= @ticket.status.name %></div>
             </div>
             <div class="col-sm">
               <p class="text-uppercase text-muted"><%= Ticket.human_attribute_name('type') %></p>
               <% if @ticket.type %>
-                <%= @ticket.type.name %>
+                <div class="type-pill-<%= @ticket.type.id %> show-ticket-type"><%= @ticket.type.name %></div>
               <% else %>
                 No type defined yet!
               <% end %>
