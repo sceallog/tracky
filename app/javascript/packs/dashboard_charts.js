@@ -70,8 +70,8 @@ const typeChart = new Chart(ctx_3, {
       data: JSON.parse(ctx_3.dataset.tickets),
       backgroundColor: [
         'rgba(231, 74, 59, 0.8)',
-        'rgba(32, 201, 166, 0.8)',
-        'rgba(54, 185, 204, 0.8)'
+        'rgba(33, 140, 65, 0.8)',
+        'rgba(240, 230, 140, 0.8)'
       ],
       borderWidth: 1
     }]

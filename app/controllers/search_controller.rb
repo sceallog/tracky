@@ -1,7 +1,8 @@
 class SearchController < ApplicationController
+  before_action :force_json, only: :autocomplete
   def search
-    @projects = Project.ransack(name_cont: params[:q]).result(distinct: true).paginate(page: params[:page], per_page: 10)
-    @tickets = Ticket.ransack(name_cont: params[:q]).result(distinct: true)
+    @projects = Project.ransack(name_cont: params[:q]).result(distinct: true)
+    @tickets = Ticket.ransack(title_cont: params[:q]).result(distinct: true)
 
     respond_to do |format|
       format.html do
@@ -13,5 +14,16 @@ class SearchController < ApplicationController
         @tickets
       end
     end
+  end
+
+  def autocomplete
+    @projects = Project.ransack(name_cont: params[:q]).result(distinct: true)
+    @tickets = Ticket.ransack(name_cont: params[:q]).result(distinct: true)
+  end
+
+  private
+
+  def force_json
+    request.format = :json
   end
 end

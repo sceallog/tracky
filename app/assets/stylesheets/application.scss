@@ -23,8 +23,11 @@
 @import "easy-autocomplete.css";
 
 :root {
-  --main-colour: #227093;
+  --main-colour: rgb(34, 112, 147);
 }
+
+// Default value for text colour in pills
+$text-colour: var(--light) !default;
 
 // Mixins
 
@@ -44,11 +47,11 @@
   box-shadow: 0 0 5px #d1d9e6;
 }
 
-@mixin pill($type, $number, $colour) {
+@mixin pill($type, $number, $background-colour, $text-colour) {
   .#{$type}-pill-#{$number} {
     @include btn-shadow;
-    background: #{$colour};
-    color: var(--light);
+    background: #{$background-colour};
+    color: $text-colour;
     border-radius: 500px;
     padding: 0.2em 0.5em;
     text-align: center;
@@ -61,13 +64,13 @@
   }
 }
 
-@include pill(priority, 1, var(--gray));
-@include pill(priority, 2, var(--yellow));
-@include pill(priority, 3, var(--orange));
-@include pill(priority, 4, var(--red));
-@include pill(type, 1, var(--red));
-@include pill(type, 2, var(--teal));
-@include pill(type, 3, var(--cyan));
+@include pill(priority, 1, var(--gray), $text-colour);
+@include pill(priority, 2, var(--yellow), $text-colour);
+@include pill(priority, 3, var(--orange), $text-colour);
+@include pill(priority, 4, var(--red), $text-colour);
+@include pill(type, 1, var(--red), $text-colour);
+@include pill(type, 2, var(--success), $text-colour);
+@include pill(type, 3, khaki, var(--gray));
 
 .profile-round {
   border-radius: 50%;
@@ -270,6 +273,7 @@
 .nowrap-column,
 th {
   white-space: nowrap;
+  text-align: center;
 }
 
 .ticket-comments-form {
@@ -293,10 +297,10 @@ th {
   text-align: center;
 }
 
-@include pill(status, 1, var(--red));
-@include pill(status, 2, var(--blue));
-@include pill(status, 3, var(--green));
-@include pill(status, 4, var(--orange));
+@include pill(status, 1, var(--red), $text-colour);
+@include pill(status, 2, var(--blue), $text-colour);
+@include pill(status, 3, var(--green), $text-colour);
+@include pill(status, 4, var(--orange), $text-colour);
 
 tr[data-href] {
   cursor: pointer;

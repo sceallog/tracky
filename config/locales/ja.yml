@@ -285,6 +285,7 @@ ja:
       no_resource_yet: "%{resource}がまだありません"
       not_created: "%{resource}を作成できませんでした。"
       not_found: "お探しの%{resource}を見つかりませんでした。"
+      search_results: "%{resource}の検索結果"
       updated: "%{resource}を更新しました。"
     search: 検索
     third_party:

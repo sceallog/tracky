@@ -315,6 +315,7 @@ en:
       not_created: "Could not create the %{resource}."
       not_found: "Could not find the %{resource} you were looking for."
       no_resource_yet: "No %{resource}s yet"
+      search_results: "Search results for %{resource}s"
       updated: "%{resource} updated successfully."
     search: Search
     third_party:
