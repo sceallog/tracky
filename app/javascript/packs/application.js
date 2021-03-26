@@ -15,6 +15,8 @@ require("./tablesort")
 require("./tableclick")
 require('noty')
 require('chart.js')
+require('./jquery.easy-autocomplete')
+require('./search')
 
 //import $ from 'jquery';
 
@@ -31,6 +33,6 @@ window.Noty = require('noty');
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-$(function () {
+document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
 })

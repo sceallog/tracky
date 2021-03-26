@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h4 class="card-title m-0"><%= User.human_attribute_name('profile') %></h4>
+    </div>
+    <div class="card-body">
+      <div class="avatar">
+      <%= image_tag avatar(@user), class: 'img-thumbnail profile-round float-left mr-5' %>
+      </div>
+      <div class="info-group">
+        <h5><%= @user.name %></h5>
+        <h6><%= mail_to @user.email %></h6>
+        <%= @user.role.title %>
+      </div>
+    </div>
+  </div>
+</div>

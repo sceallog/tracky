@@ -1,7 +1,7 @@
 <div class="col-mb-4">
   <div class="ticket-info card mr-3">
     <div class="card-header d-flex justify-content-between">
-      <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.details_with_id', resource: Ticket.model_name.human, id: @ticket.id) %></h4>
+      <h4 class="card-title my-auto"><%= t('strings.resources.details_with_id', resource: Ticket.model_name.human, id: @ticket.id) %></h4>
       <div class="inline">
         <%= link_to project_path(@ticket.project_id), class: 'btn btn-circle back-btn btn-lg', data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } }, title: t('links.back') do%>
           <i class="fas fa-arrow-left"></i>

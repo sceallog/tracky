@@ -20,6 +20,7 @@
 @import "tablesort";
 @import "noty/src/noty.scss";
 @import "noty/src/themes/metroui.scss";
+@import "easy-autocomplete.css";
 
 :root {
   --main-colour: #227093;
@@ -249,9 +250,6 @@
   th,
   td {
     padding: 12px 15px;
-    &:last-of-type {
-      text-align: right;
-    }
   }
   tbody {
     tr {
@@ -269,7 +267,8 @@
   }
 }
 
-#stat-column {
+.nowrap-column,
+th {
   white-space: nowrap;
 }
 
@@ -321,4 +320,9 @@ tr[data-href] {
     top: 0;
     left: 100%;
   }
+}
+
+#languageDropdown,
+#search-button {
+  color: var(--main-colour);
 }

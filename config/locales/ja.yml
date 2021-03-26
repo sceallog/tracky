@@ -286,6 +286,7 @@ ja:
       not_created: "%{resource}を作成できませんでした。"
       not_found: "お探しの%{resource}を見つかりませんでした。"
       updated: "%{resource}を更新しました。"
+    search: 検索
     third_party:
       no_change_email: 第三者プロバイダーによりログインされているため、変更はできません。
     tickets:

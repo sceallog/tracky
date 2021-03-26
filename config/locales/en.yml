@@ -316,6 +316,7 @@ en:
       not_found: "Could not find the %{resource} you were looking for."
       no_resource_yet: "No %{resource}s yet"
       updated: "%{resource} updated successfully."
+    search: Search
     third_party:
       no_change_email: You cannot change your email address while logged in via a third-party provider.
     tickets:

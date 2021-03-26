@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class UsersController < ApplicationController
   before_action :find_user, except: %i[index]
 
   def index

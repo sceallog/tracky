@@ -1,0 +1,42 @@
+<table class="content-table">
+<% @projects.each do |project| %>
+  <tbody>
+    <tr>
+    <td><%= project.name %></td>
+    <td><%= project.description %></td>
+    </tr>
+  <tbody>
+<% end %>
+</table>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <h4 class="card-title my-auto">Search results for Tickets</h4>
+      <%= will_paginate(@tickets, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end mt-2 mr-2') %>
+    </div>
+    <table class="content-table">
+      <thead>
+        <tr>
+          <th><%= Ticket.human_attribute_name('title') %></th>
+          <th><%= Ticket.human_attribute_name('description') %></th>
+          <th><%= Priority.model_name.human %></th>
+          <th><%= Status.model_name.human %></th>
+          <th><%= Type.model_name.human %></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @tickets.each do |ticket| %>
+        <tr data-href=<%= ticket_url(ticket.id) %>>
+          <td><%= ticket.title %></td>
+          <td><%= ticket.description %></td>
+          <td class='nowrap-column'><div class='priority-pill-<%= ticket.priority.id %>'><%= ticket.priority.name %></div></td>
+          <td class='nowrap-column'><div class='status-pill-<%= ticket.status.id %>'><%= ticket.status.name %></div></td>
+          <td class='nowrap-column'><div class='type-pill-<%= ticket.type.id %>'><%= ticket.type.name %></div></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate(@tickets, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end mr-2') %>
+  </div>
+</div>
