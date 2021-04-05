@@ -1,61 +1,77 @@
-<% if @projects.any? %>
-  <div class="container">
-    <div class="card">
-      <div class="card-header d-flex justify-content-between">
-        <h4 class="card-title my-auto"><%= t('strings.resources.search_results', resource: Project.model_name.human) %></h4>
-      </div>
-      <table class="content-table">
-        <thead>
-          <tr>
-            <th><%= Project.human_attribute_name('name') %></th>
-            <th><%= Project.human_attribute_name('description') %></th>
-            <th class='text-center'><%= Project.human_attribute_name('open_tickets') %></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @projects.each do |project| %>
-          <tr data-href=<%= project_url(project) %>>
-            <td><%= project.name %></td>
-            <td><%= project.description %></td>
-            <td class='text-center'><%= Project.open_ticket_count(project.id) %></td>
-          </tr>
-        <% end %>
-        <tbody>
-      </table>
-    </div>
-  </div>
-<% end %>
+<div class="container-fluid">
+  <% if @projects.any? && @tickets.any? %>
+    <div class="row row-cols-1 row-cols-md-2">
+  <% else %>
+    <div class="row row-cols-1">
+  <% end %>
+    <% if @projects.any? %>
+      <% if @tickets.any? %>
+        <div class="col-md-5 col-lg-6 mb-2 mb-md-0">
+      <% else %>
+        <div class="col-12">
+      <% end %>
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h4 class="card-title my-auto"><%= t('strings.resources.search_results', resource: Project.model_name.human) %></h4>
+            </div>
+            <table class="content-table">
+              <thead>
+                <tr>
+                  <th><%= Project.human_attribute_name('name') %></th>
+                  <th class='d-none d-lg-table-cell'><%= Project.human_attribute_name('description') %></th>
+                  <th class='text-center'><%= Project.human_attribute_name('open_tickets') %></th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @projects.each do |project| %>
+                <tr data-href=<%= project_url(project) %>>
+                  <td><%= project.name %></td>
+                  <td class='d-none d-lg-table-cell'><%= project.description %></td>
+                  <td class='text-center'><%= Project.open_ticket_count(project.id) %></td>
+                </tr>
+              <% end %>
+              <tbody>
+            </table>
+          </div>
+        </div>
+    <% end %>
 
-<% if @tickets.any? %>
-  <div class="container">
-    <div class="card">
-      <div class="card-header d-flex justify-content-between">
-        <h4 class="card-title my-auto"><%= t('strings.resources.search_results', resource: Ticket.model_name.human) %></h4>
-        <%= will_paginate(@tickets, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end') %>
-      </div>
-      <table class="content-table">
-        <thead>
-          <tr>
-            <th><%= Ticket.human_attribute_name('title') %></th>
-            <th class='d-none d-lg-table-cell'><%= Ticket.human_attribute_name('description') %></th>
-            <th><%= Priority.model_name.human %></th>
-            <th class='d-none d-sm-table-cell'><%= Status.model_name.human %></th>
-            <th class='text-center d-none d-sm-table-cell'><%= Type.model_name.human %></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @tickets.each do |ticket| %>
-          <tr data-href=<%= ticket_url(ticket.id) %>>
-            <td><%= ticket.title %></td>
-            <td class='d-none d-lg-block'><%= ticket.description %></td>
-            <td><div class='priority-pill-<%= ticket.priority.id %>'><%= ticket.priority.name %></div></td>
-            <td class='nowrap-column d-none d-sm-table-cell'><div class='status-pill-<%= ticket.status.id %>'><%= ticket.status.name %></div></td>
-            <td class='nowrap-column d-none d-sm-table-cell'><div class='type-pill-<%= ticket.type.id %>'><%= ticket.type.name %></div></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    <%= will_paginate(@tickets, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-end mr-3') %>
+    <% if @tickets.any? %>
+      <% if @projects.any? %>
+        <div class="col-md-7 col-lg-6">
+      <% else %>
+        <div class="col-12">
+      <% end %>
+          <div class="card">
+            <div class="card-header d-flex justify-content-between">
+              <h4 class="card-title my-auto"><%= t('strings.resources.search_results', resource: Ticket.model_name.human) %></h4>
+              <%= will_paginate(@tickets, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'my-auto d-none d-sm-inline-block') %>
+            </div>
+            <table class="content-table">
+              <thead>
+                <tr>
+                  <th><%= Ticket.human_attribute_name('title') %></th>
+                  <th class='d-none d-xl-table-cell'><%= Ticket.human_attribute_name('description') %></th>
+                  <th><%= Priority.model_name.human %></th>
+                  <th class='d-none d-sm-table-cell'><%= Status.model_name.human %></th>
+                  <th class='text-center d-none d-sm-table-cell'><%= Type.model_name.human %></th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @tickets.each do |ticket| %>
+                <tr data-href=<%= ticket_url(ticket.id) %>>
+                  <td><%= ticket.title %></td>
+                  <td class='d-none d-xl-table-cell'><%= ticket.description %></td>
+                  <td><div class='priority-pill-<%= ticket.priority.id %>'><%= ticket.priority.name %></div></td>
+                  <td class='nowrap-column d-none d-sm-table-cell'><div class='status-pill-<%= ticket.status.id %>'><%= ticket.status.name %></div></td>
+                  <td class='nowrap-column d-none d-sm-table-cell'><div class='type-pill-<%= ticket.type.id %>'><%= ticket.type.name %></div></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          <%= will_paginate(@tickets, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'd-flex justify-content-center') %>
+          </div>
+        </div>
+    <% end %>
     </div>
-  </div>
-<% end %>
+</div>
