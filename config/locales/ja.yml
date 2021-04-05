@@ -195,6 +195,7 @@ ja:
   links:
     add: 追加
     back: 戻る
+    back_to: "%{resource}へ戻る"
     cancel: キャンセル
     delete: 削除
     edit: 編集
@@ -204,6 +205,7 @@ ja:
     logout: ログアウト
     new_project: 新しいプロジェクト
     new_ticket: 新しいチケット
+    overview: "%{resource}一覧"
     projects: プロジェクト
     profile: プロフィール
     signup: 新規登録

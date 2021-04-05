@@ -14,7 +14,7 @@
         <thead class='text-uppercase'>
           <tr>
             <th><%= Project.human_attribute_name('name') %></th>
-            <th><%= Project.human_attribute_name('description') %></th>
+            <th class='d-none d-md-table-cell'><%= Project.human_attribute_name('description') %></th>
             <th><%= Project.human_attribute_name('open_tickets') %></th>
           </tr>
         </thead>
@@ -23,7 +23,7 @@
             <% @projects.each do |p| %>
               <tr data-href="<%= project_url(p.id) %>" >
                 <td><%= p.name %></td>
-                <td><%= p.description %></td>
+                <td class='d-none d-md-table-cell'><%= p.description %></td>
                 <td><%= Project.open_ticket_count(p.id) %></td>
               </tr>
             <% end %>

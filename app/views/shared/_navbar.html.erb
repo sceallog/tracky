@@ -1,20 +1,23 @@
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light topbar mb-4 fixed-top ">
   <%= link_to  "Tracky", root_path, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-expanded='false'>
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="topNav">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <%= link_to  t('links.home'), root_path, class: 'nav-link text-lg' %>
+          <%= link_to  t('links.home'), root_path, class: 'nav-link text-lg text-nowrap' %>
         </li>
         <li class="nav-item dropdown no-arrow">
-          <a class="nav-link text-lg" href="#" id='projectDropdown' role='button' data-toggle='dropdown' title="<%= t('links.projects') %>"><%= t('links.projects') %></a>
+          <a class="nav-link text-lg text-nowrap" href="#" id='projectDropdown' role='button' data-toggle='dropdown' title="<%= t('links.projects') %>"><%= t('links.projects') %></a>
           <div class="dropdown-menu shadow animated--grow-in" aria-labelledby='projectDropdown'>
             <%= link_to  projects_path, class: 'dropdown-item' do %>
               <i class="fas fa-list-ul fa-sm fa-fw mr-2 text-gray-400"></i>
               <%= t('strings.resources.overview', resource: Project.model_name.human) %>
             <% end %>
-              <%= link_to  new_project_path, class: 'dropdown-item' do %>
+              <%= link_to  new_project_path, class: 'dropdown-item text-nowrap' do %>
                 <i class="fas fa-folder fa-sm fa-fw mr-2 text-gray-400"></i>
                 <%= t('links.new_project') %>
             <% end %>
@@ -22,20 +25,20 @@
         </li>
         <% if current_user.admin? %>
           <li class="nav-item">
-            <%= link_to  t('links.users'), admin_users_path, class: 'nav-link text-lg' %>
+            <%= link_to  t('links.users'), admin_users_path, class: 'nav-link text-lg text-nowrap' %>
           </li>
         <% end %>
       </ul>
+      <div class="search-field ml-auto">
+        <%= form_with url: search_path, local: true, method: :get, html: { class: 'form-inline my-2 my-lg-0' } do |f| %>
+          <%= f.text_field :q, placeholder: t('strings.search'), data: { behaviour: 'autocomplete', header1: Project.model_name.human, header2: Ticket.model_name.human }, class: 'form-control mr-sm-2 search-input' %>
+          <%= f.button t('strings.search'), class: 'btn my-2 my-sm-0 mx-2', id: 'search-button' do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div> 
 
-    <div class="search-field ml-auto">
-      <%= form_with url: search_path, local: true, method: :get, html: { class: 'form-inline my-2 my-lg-0' } do |f| %>
-        <%= f.text_field :q, placeholder: t('strings.search'), data: { behaviour: 'autocomplete', header1: Project.model_name.human, header2: Ticket.model_name.human }, class: 'form-control mr-sm-2' %>
-        <%= f.button t('strings.search'), class: 'btn btn-outline-primary my-2 my-sm-0 mx-2', id: 'search-button' do %>
-          <i class="fas fa-search"></i>
-        <% end %>
-      <% end %>
-    </div>
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
@@ -45,6 +48,7 @@
           <%= link_to  t('links.signup'), new_user_registration_path, class: 'btn btn-sm btn-outline-primary' %>&nbsp;&nbsp;
         </div>
       <% else %>
+        <div class="d-flex left-navbar">
         <!-- Language Selector -->
         <li class='nav-item dropleft no-arrow'>
           <a class='nav-link' href='#' id='languageDropdown' role='button'
@@ -64,7 +68,11 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 ">
                 <%= current_user.name %><br>
-                <span class="text-gray-600 small"><%= current_user.role.title %></span>
+                <span class="text-gray-600 small"><%= current_user.role.title %>
+                  <% if current_user.admin? %>
+                    | <%= User.human_attribute_name('admin') %>
+                  <% end %>
+                </span>
                 </span>
                 <%= image_tag avatar(current_user), class: 'img-profile rounded-circle' %>
             </a>
@@ -82,6 +90,7 @@
                 <% end %>
             </div>
         </li>
+        </div>
       <% end %>
     </ul>
 

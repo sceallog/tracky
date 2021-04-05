@@ -8,9 +8,9 @@
         <thead class='text-uppercase'>
           <tr>
             <th><%= Ticket.human_attribute_name('title') %></th>
-            <th class='d-none d-lg-block'><%= t('strings.tickets.assigned_developer') %></th>
+            <th class='d-none d-lg-table-cell'><%= t('strings.tickets.assigned_developer') %></th>
             <th><%= Ticket.human_attribute_name('status') %></th>
-            <th><%= Ticket.human_attribute_name('date_identified') %></th>
+            <th class='d-none d-sm-table-cell'><%= Ticket.human_attribute_name('date_identified') %></th>
           </tr>
         </thead>
         <tbody>
@@ -18,9 +18,9 @@
             <% @tickets.each do |t| %>
               <tr data-href=<%= ticket_url(t.id) %>>
                 <td><%= t.title %></td>
-                <td class='d-none d-lg-block'><%= t.user.name %></td>
+                <td class='d-none d-lg-table-cell'><%= t.user.name %></td>
                 <td class='nowrap-column'><div class="status-pill-<%= t.status.id %>"><%= t.status.name %></div></td>
-                <td><%= t.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+                <td class='d-none d-sm-table-cell'><%= t.created_at.strftime("%Y/%m/%d %H:%M") %></td>
               </tr>
             <% end %>
           <% else %>

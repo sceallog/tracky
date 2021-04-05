@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-  before_action :force_json, only: :autocomplete
   def search
     @projects = Project.ransack(name_cont: params[:q]).result(distinct: true)
     @tickets = Ticket.ransack(title_cont: params[:q]).result(distinct: true)
@@ -14,11 +13,6 @@ class SearchController < ApplicationController
         @tickets
       end
     end
-  end
-
-  def autocomplete
-    @projects = Project.ransack(name_cont: params[:q]).result(distinct: true)
-    @tickets = Ticket.ransack(name_cont: params[:q]).result(distinct: true)
   end
 
   private

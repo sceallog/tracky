@@ -228,6 +228,7 @@ en:
     add: Add
     back: Back
     cancel: Cancel
+    back_to: "Back to %{resource}"
     delete: Delete
     edit: Edit
     home: Home
@@ -235,6 +236,7 @@ en:
     logout: Logout
     new_project: New project
     new_ticket: New ticket
+    overview: "%{resource}s list"
     projects: Projects
     profile: Profile
     save: Save

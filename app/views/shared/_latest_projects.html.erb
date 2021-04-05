@@ -1,4 +1,4 @@
-<div class="latest-projects col-md-6 col-sm-12 mb-10">
+<div class="latest-projects col-md-6 col-sm-12 mb-sm-2">
   <div class="card">
     <div class="card-header d-flex justify-content-center">
       <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.newest_resources', resource: Project.model_name.human) %></h4>
@@ -8,7 +8,8 @@
         <thead class="text-uppercase">
           <tr>
             <th><%= Project.human_attribute_name('name') %></th>
-            <th><%= t('datetime.created_at') %></th>
+            <th class='d-none d-sm-table-cell'><%= t('datetime.created_at') %></th>
+            <th><%= Project.human_attribute_name('target_end_date') %></th>
           </tr>
         </thead>
           <tbody>
@@ -16,7 +17,8 @@
               <% @projects.each do |p| %>
                 <tr data-href=<%= project_url(p.id)%>>
                   <td><%= p.name %></td>
-                  <td><%= p.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+                  <td class='d-none d-sm-table-cell'><%= p.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+                  <td><%= p.target_end_date.strftime("%Y/%m/%d") %></td>
                 </tr>
               <% end %>
             <% else %>

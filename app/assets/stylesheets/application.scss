@@ -58,6 +58,7 @@ $text-colour: var(--light) !default;
     vertical-align: bottom;
     &.show-ticket-#{$type} {
       width: fit-content;
+      width: -moz-fit-content;
       padding-left: 1em;
       padding-right: 1em;
     }
@@ -71,6 +72,10 @@ $text-colour: var(--light) !default;
 @include pill(type, 1, var(--red), $text-colour);
 @include pill(type, 2, var(--success), $text-colour);
 @include pill(type, 3, khaki, var(--gray));
+@include pill(status, 1, var(--red), $text-colour);
+@include pill(status, 2, var(--blue), $text-colour);
+@include pill(status, 3, var(--green), $text-colour);
+@include pill(status, 4, var(--orange), $text-colour);
 
 .profile-round {
   border-radius: 50%;
@@ -244,11 +249,13 @@ $text-colour: var(--light) !default;
   thead tr {
     background-color: #d1d1d1;
     color: var(--main-text);
-    text-align: left;
     font-weight: bold;
     height: 3em;
     font-size: 1.2em;
     border-bottom: 2px solid var(--primary);
+  }
+  .admin-status-title {
+    text-align: center;
   }
   th,
   td {
@@ -273,7 +280,7 @@ $text-colour: var(--light) !default;
 .nowrap-column,
 th {
   white-space: nowrap;
-  text-align: center;
+  // text-align: center;
 }
 
 .ticket-comments-form {
@@ -281,7 +288,6 @@ th {
 }
 
 .admin-status-col {
-  vertical-align: center;
   text-align: center;
 }
 
@@ -296,11 +302,6 @@ th {
 .admin-status-title {
   text-align: center;
 }
-
-@include pill(status, 1, var(--red), $text-colour);
-@include pill(status, 2, var(--blue), $text-colour);
-@include pill(status, 3, var(--green), $text-colour);
-@include pill(status, 4, var(--orange), $text-colour);
 
 tr[data-href] {
   cursor: pointer;
@@ -329,4 +330,25 @@ tr[data-href] {
 #languageDropdown,
 #search-button {
   color: var(--main-colour);
+}
+
+#search-button:hover {
+  color: white;
+  background-color: var(--main-colour);
+}
+
+#languageDropdown:hover {
+  transform: scale(1.2);
+}
+
+.search-input {
+  max-width: 200px;
+}
+
+div.navbar-collapse {
+  background-color: rgb(248, 249, 252);
+}
+
+div.search-field {
+  white-space: nowrap;
 }

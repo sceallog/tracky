@@ -1,9 +1,9 @@
-<div class="project-info card mr-3">
+<div class="project-info card">
   <div class="card-header d-flex justify-content-between">
     <h4 class="card-title mt-auto mb-auto"><%= t('strings.resources.details_with_id', resource: Project.model_name.human, id: @project.id) %></h4>
     <div class="inline">
-      <%= link_to  projects_path, class: 'btn btn-circle btn-lg back-btn', title: t('links.back'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
-        <i class="fas fa-arrow-left"></i>
+      <%= link_to  projects_path, class: 'btn btn-circle btn-lg back-btn', title: t('links.overview', resource: Project.model_name.human), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
+        <i class="fas fa-list-ul"></i>
       <% end %>
       <%= link_to edit_project_path(@project), class: 'btn btn-circle btn-lg edit-btn', title: t('links.edit'), data: { toggle: 'tooltip', delay: { 'show': 300, 'hide': 100 } } do %>
         <i class="fas fa-pen"></i>
