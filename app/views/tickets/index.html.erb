@@ -5,11 +5,11 @@
   <table class='content-table table-sortable'>
     <thead class='text-uppercase'>
       <tr>
-        <th>Ticket Summary</th>
-        <th>Date Identified</th>
-        <th>Assigned To</th>
-        <th>Status</th>
-        <th>Priority</th>
+        <th><%= Ticket.human_attribute_name('title') %></th>
+        <th><%= t('datetime.created_at') %></th>
+        <th><%= t('strings.tickets.assigned_developer') %></th>
+        <th><%= Ticket.human_attribute_name('status') %></th>
+        <th><%= Ticket.human_attribute_name('priority') %></th>
         <th></th>
       </tr>
     </thead>

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_ticket, except: %i[destroy]
+  before_action :set_ticket, except: :destroy
   before_action :new, only: :create
 
   def new

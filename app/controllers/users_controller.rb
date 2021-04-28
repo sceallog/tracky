@@ -12,7 +12,6 @@ class UsersController < ApplicationController
       I18n.locale = current_user.locale.locale
       flash[:notice] = t('strings.resources.updated', resource: Role.model_name.human)
     else
-      # I18n.locale = current_user.locale.locale
       flash[:alert] = t('errors.messages.not_updated', resource: Role.model_name.human)
     end
     redirect_to admin_users_path

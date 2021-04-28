@@ -60,7 +60,7 @@
               <% if @ticket.type %>
                 <div class="type-pill-<%= @ticket.type.id %> show-ticket-type"><%= @ticket.type.name %></div>
               <% else %>
-                No type defined yet!
+                <p><%= t('strings.resources.no_resource_defined_yet', resource: Type.model_name.human) %></p>
               <% end %>
             </div>
           </div>

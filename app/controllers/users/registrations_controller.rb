@@ -3,7 +3,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  # before_action :set_role, only: [:new]
   # before_action :configure_permitted_parameters
 
   # GET /resource/sign_up
@@ -35,7 +34,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         I18n.locale = current_user.locale.locale
         flash[:notice] = t('devise.registrations.updated')
       else
-        # I18n.locale = current_user.locale.locale
         flash[:alert] = t('devise.errors.messages.not_updated')
       end
       respond_to do |format|
@@ -59,10 +57,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
-
-  def set_role
-    self.role_id = 1 if provider
-  end
 
   def update_resource(resource, params)
     resource.update_without_password(params)

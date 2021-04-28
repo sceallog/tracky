@@ -20,7 +20,6 @@
               <td><%= user.name %></td>
               <%= form_with(model: [:admin, user], method: :patch) do |f| %>
                 <td><%= f.select :role_id, Role.all.collect{ |r| [r.title, r.id] }, {selected: user.role.id}, onchange: 'this.form.submit();', class: 'custom-selector' %></td> 
-                <%# <td class="admin-check-col"><%= f.check_box :admin, onchange: 'this.form.submit();', class: 'custom-control custom-checkbox' %></td>
               <% end %>
               <td class="admin-status-col">
                 <% if user.admin? %>

@@ -285,6 +285,7 @@ ja:
       overview: "%{resource}一覧"
       newest_resources: "最近追加された%{resource}"
       no_resource_yet: "%{resource}がまだありません"
+      no_resource_selected_yet: "%{resource}未設定"
       not_created: "%{resource}を作成できませんでした。"
       not_found: "お探しの%{resource}を見つかりませんでした。"
       search_results: "%{resource}の検索結果"
