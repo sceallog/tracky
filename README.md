@@ -19,3 +19,10 @@ Bootstrapによる表示のスタイリングを学ぶことが制作にあた�
 
 https://github.com/user-attachments/assets/f6cb2543-987a-470c-a474-d0dc4fce215e
 
+
+### Bootstrapのクラスを活躍してレスポンシブデザイン
+
+
+
+https://github.com/user-attachments/assets/2d9a7217-7313-4d87-b15b-3f624358784e
+
