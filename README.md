@@ -11,6 +11,11 @@ Bootstrapによる表示のスタイリングを学ぶことが制作にあた�
 - Ruby on Rails 6.0
 - PostgreSQL
 - Bootstrap
+- i18n
 
 ### 動作の動画
+
+
+
+https://github.com/user-attachments/assets/f6cb2543-987a-470c-a474-d0dc4fce215e
 
