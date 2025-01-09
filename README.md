@@ -1,24 +1,14 @@
-# README
+# Tracky
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## バグ追跡システム
 
-Things you may want to cover:
+Ruby on Railsの自習学習のために作った、チケット型バグ追跡システムです。
 
-* Ruby version
+### 技術情報
+- Ruby 2.6.10
+- Ruby on Rails 6.0
+- PostgreSQL
+- Bootstrap
 
-* System dependencies
+### 動作の動画
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
