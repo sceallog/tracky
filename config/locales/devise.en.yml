@@ -89,6 +89,7 @@ en:
         sign_in_with_provider: "Login with %{provider}"
         sign_up: "Create an Account!"
         sign_up_with_provider: "Register with %{provider}"
+        sign_in: "Login"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."

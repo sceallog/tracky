@@ -297,6 +297,7 @@ en:
       add_comment: Add a comment
     login:
       greeting: Welcome Back!
+      heading: "Login"
     projects:
       name: Projects
       tickets_for: Tickets for this project
